@@ -1,0 +1,27 @@
+{
+    "plugins\/mitsubishimelcloud\/plugin_info\/configuration.php": {
+        "Général :": "Général :",
+        "Email MELCloud :": "Email MELCloud :",
+        "Identifiant mail pour se connecter à MELCloud": "Identifiant mail pour se connecter à MELCloud",
+        "Mot de passe MELCloud :": "Mot de passe MELCloud :",
+        "Mot de passe pour se connecter à MELCloud": "Mot de passe pour se connecter à MELCloud",
+        "Langue :": "Langue :",
+        "Langue utilisée par l'application": "Langue utilisée par l'application",
+        "Obtenir token :": "Obtenir token :",
+        "Récupérer le Token MELCloud": "Récupérer le Token MELCloud",
+        "Token :": "Token :",
+        "Synchroniser équipements :": "Synchroniser équipements :",
+        "Récupérer les équipements MELCloud": "Récupérer les équipements MELCloud",
+        "Avancé :": "Avancé :",
+        "Application version :": "Application version :",
+        "Version de l'application. Trouvable dans le code source de la page https://app.melcloud.com/": "Version de l'application. Trouvable dans le code source de la page https://app.melcloud.com/",
+        "Merci de remplir l\\'email et le mot de passe avant de récupérer le token": "Merci de remplir l'email et le mot de passe avant de récupérer le token",
+        "Merci de sauvegarder la configuration avant de récupérer le token": "Merci de sauvegarder la configuration avant de récupérer le token",
+        "En cours de récupération du token...": "En cours de récupération du token...",
+        "Token non-récupéré": "Token non-récupéré",
+        "Token récupéré": "Token récupéré",
+        "Merci de récupérer le token en premier": "Merci de récupérer le token en premier",
+        "Erreur de synchronisation.": "Erreur de synchronisation.",
+        "Synchronisation réussie.": "Syncrhonisation réussie."
+    }
+}

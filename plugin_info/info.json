@@ -1,0 +1,36 @@
+{
+	"id" : "mitsubishimelcloud",
+	"name" : "Mitsubishi MELCould",
+	"description" : {
+		"fr_FR": "Plugin pour gérer les PAC ou climatisations Mitsubishi Electric étant équipées de l'interface Wifi MELCloud",
+		"en_US": "Plugin to manage Mitsubishi Electric heat pumps or ar conditioners equipped with MELCloud Wifi interface"
+	},
+	"licence" : "AGPLv3",
+	"author" : "DuckPy",
+	"require" : "4.0",
+	"category" : "wellness",
+	"hasDependency" : false,
+	"hasOwnDeamon" : false,
+	"maxDependancyInstallTime" : 0,
+	"changelog" : "TBD",
+	"documentation" : "TBD",
+	"changelog_beta" : "TBD",
+	"documentation_beta" : "TBD",
+	"link" : {
+		"forum" : "TBD"
+	},
+	"language": [
+		"fr_FR",
+		"en_US"
+	],
+	"compatibility": [
+		"miniplus",
+		"smart",
+		"rpi",
+		"docker",
+		"diy",
+		"mobile",
+		"v4",
+		"atlas"
+	]
+}

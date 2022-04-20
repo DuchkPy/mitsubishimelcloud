@@ -1,0 +1,26 @@
+{
+    "plugins\/mitsubishimelcloud\/plugin_info\/configuration.php": {
+        "Général :": "General :",
+        "Email MELCloud :": "Email MELCloud :",
+        "Identifiant mail pour se connecter à MELCloud": "Email ID to connect to MELCloud",
+        "Mot de passe MELCloud :": "Password MELCloud :",
+        "Mot de passe pour se connecter à MELCloud": "Password to connect to MELCloud",
+        "Langue :": "Language :",
+        "Langue utilisée par l'application": "Language used by the application",
+        "Obtenir token :": "Get token :",
+        "Récupérer le Token MELCloud": "Collect the MELCloud Token",
+        "Token :": "Token :",
+        "Synchroniser équipements :": "Synchronize equipment:",
+        "Récupérer les équipements MELCloud": "Collect MELCloud devices",
+        "Avancé :": "Advanced :",
+        "Application version :": "Application version :",
+        "Version de l'application. Trouvable dans le code source de la page https://app.melcloud.com/": "Version of the application. You can find it in the source code of the page https://app.melcloud.com/",
+        "Merci de remplir l\\'email et le mot de passe avant de récupérer le token": "Please fill in the email and password before retrieving the token",
+        "Merci de sauvegarder la configuration avant de récupérer le token": "Please save the configuration before retrieving the token",
+        "En cours de récupération du token...": "In the process of recovering the token...",
+        "Token non-récupéré": "Unrecovered token",
+        "Token récupéré": "Recovered Token",
+        "Erreur de synchronisation.": "Synchronization error.",
+        "Synchronisation réussie.": "Successful synchronization. "
+    }
+}
