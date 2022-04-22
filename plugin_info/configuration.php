@@ -131,8 +131,7 @@ if (!isConnect()) {
           type: 'POST',
           url: 'plugins/mitsubishimelcloud/core/ajax/mitsubishimelcloud.ajax.php',
           data: {
-            action: 'GetToken',
-            id : $(this).closest('.slaveConfig').attr('data-slave_id')
+            action: 'GetToken'
           },
           dataType: 'json',
           error: function (request, status, error) {
@@ -141,7 +140,7 @@ if (!isConnect()) {
           },
           success: function (data) {
             $('#div_alert').showAlert({message: '{{Token récupéré}}', level: 'success'});
-            location.reload();
+            window.location.reload();
           }
         });
       }

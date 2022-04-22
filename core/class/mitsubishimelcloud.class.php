@@ -66,7 +66,7 @@ class mitsubishimelcloud extends eqLogic
 
   /** Collect data from MELCloud app */
   public static function SynchronizeMELCloud() {
-    $Token = config::byKey('MyToken', 'mitsubishimelcloud');
+    $Token = config::byKey('Token', __CLASS__);
     if ($Token == '' || substr($Token, 0, 11) == 'Login ERROR') {
       message::add('mitsubishimelcloud', __('Merci de récupérer le token MELCloud avant de créer des équipements.', __FILE__));
       log::add(__CLASS__, 'debug', __('Merci de récupérer le token MELCloud avant de créer des équipements.', __FILE__));
@@ -115,7 +115,7 @@ class mitsubishimelcloud extends eqLogic
 
   /** Write equipment information from Mitsubishi servers for each equipment */
   private static function SynchronizeCommands($device) {
-    log::add(__CLASS__, 'debug', 'Syncrhonize : ' . $device['DeviceName']);
+    log::add(__CLASS__, 'debug', 'Synchronize : ' . $device['DeviceName']);
     if ($device['DeviceID'] == '') return;
     log::add(__CLASS__, 'debug', $device['DeviceID'] . ' ' . $device['DeviceName']);
 

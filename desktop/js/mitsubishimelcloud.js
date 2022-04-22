@@ -83,30 +83,26 @@ function addCmdToTable(_cmd) {
   })
 }
 
-// Function specific for Melcloud plugin
+
+//     * *********************Function specific to Melcloud plugin*************************
 
 
 /** Collect equipment from MELCloud app */
-$('.bt_Synch').on('click', function () {
-  var Token = document.getElementById('Token').value;
-  if(Token.substring(0, 11) == 'Login ERROR' || Token.length == 0) {
-    alert('{{Merci de récupérer le token en premier}}');
-  } else {
-    $.ajax({
-      type: 'POST',
-      url: 'plugins/mitsubishimelcloud/core/ajax/mitsubishimelcloud.ajax.php',
-      data: {
-        action: 'SynchronizeMELCloud',
-        id : $(this).closest('.slaveConfig').attr('data-slave_id')
-      },
-      dataType: 'json',
-      error: function (request, status, error) {
-        handleAjaxError(request, status, error, $('#div_alert'));
-        $('#div_alert').showAlert({message: '{{Erreur de synchronisation.}}', level: 'error'});
-      },
-      success: function (data) {
-        $('#div_alert').showAlert({message: '{{Synchronisation réussie.}}', level: 'success'});
-      }
-    });
-  }
+$('.bt_Synch').off('click').on('click', function () {
+  $('#div_alert').showAlert({message: '{{En cours de récupération des éléments...}}', level: 'warning'});
+  $.ajax({
+    type: 'POST',
+    url: 'plugins/mitsubishimelcloud/core/ajax/mitsubishimelcloud.ajax.php',
+    data: {
+      action: 'SynchronizeMELCloud'
+    },
+    dataType: 'json',
+    error: function (request, status, error) {
+      handleAjaxError(request, status, error, $('#div_alert'));
+      $('#div_alert').showAlert({message: '{{Erreur de synchronisation.}}', level: 'error'});
+    },
+    success: function (data) {
+      $('#div_alert').showAlert({message: '{{Synchronisation réussie.}}', level: 'success'});
+    }
+  });
 });
