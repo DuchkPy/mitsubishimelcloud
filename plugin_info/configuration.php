@@ -117,71 +117,7 @@ if (!isConnect()) {
 </form>
 
 <script>
-  /** Collect token from MELCloud app */
-  $('.bt_GetToken').on('click', function () {
-    //Check if form is completly filled and saved
-    if(document.getElementById('email').value == '' || document.getElementById('password').value == '') {
-      $('#div_alert').showAlert({message: '{{Merci de remplir l\'email et le mot de passe avant de récupérer le token}}', level: 'danger'});
-    } else {
-      if(ComptChamp > 3) {
-        $('#div_alert').showAlert({message: '{{Merci de sauvegarder la configuration avant de récupérer le token}}', level: 'danger'});
-      } else {
-        $('#div_alert').showAlert({message: '{{En cours de récupération du token...}}', level: 'warning'});
-        $.ajax({
-          type: 'POST',
-          url: 'plugins/mitsubishimelcloud/core/ajax/mitsubishimelcloud.ajax.php',
-          data: {
-            action: 'GetToken',
-            id : $(this).closest('.slaveConfig').attr('data-slave_id')
-          },
-          dataType: 'json',
-          error: function (request, status, error) {
-            handleAjaxError(request, status, error, $('#div_alert'));
-            $('#div_alert').showAlert({message: '{{Token non-récupéré}}', level: 'error'});
-          },
-          success: function (data) {
-            $('#div_alert').showAlert({message: '{{Token récupéré}}', level: 'success'});
-            location.reload();
-          }
-        });
-      }
-    }
-  });
-
-  /** Collect equipment from MELCloud app */
-  $('.bt_Synch').on('click', function () {
-    var Token = document.getElementById('Token').value;
-    if(Token.substring(0, 11) == 'Login ERROR' || Token.length == 0) {
-      alert('{{Merci de récupérer le token en premier}}');
-    } else {
-      $.ajax({
-        type: 'POST',
-        url: 'plugins/mitsubishimelcloud/core/ajax/mitsubishimelcloud.ajax.php',
-        data: {
-          action: 'SynchronizeMELCloud',
-          id : $(this).closest('.slaveConfig').attr('data-slave_id')
-        },
-        dataType: 'json',
-        error: function (request, status, error) {
-          handleAjaxError(request, status, error, $('#div_alert'));
-          $('#div_alert').showAlert({message: '{{Erreur de synchronisation.}}', level: 'error'});
-        },
-        success: function (data) {
-          $('#div_alert').showAlert({message: '{{Synchronisation réussie.}}', level: 'success'});
-        }
-      });
-    }
-    
-  });
-
-  //Some tricks to ensure the user have saved before trying to collect the token
-  var ComptChamp = 0;
-  function ConfigUpdate() {
-    ComptChamp++;
-  }
-  document.getElementById("bt_savePluginConfig").addEventListener("click", function() {
-    ComptChamp = 3;
-  });
+  
 </script>
 <!-- Inclusion du fichier javascript du plugin (dossier, nom_du_fichier, extension_du_fichier, id_du_plugin) -->
 <?php include_file('desktop', 'mitsubishimelcloud', 'js', 'mitsubishimelcloud');?>
