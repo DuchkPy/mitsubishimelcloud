@@ -116,8 +116,5 @@ if (!isConnect()) {
   </fieldset>
 </form>
 
-<script>
-  
-</script>
 <!-- Inclusion du fichier javascript du plugin (dossier, nom_du_fichier, extension_du_fichier, id_du_plugin) -->
 <?php include_file('desktop', 'mitsubishimelcloud', 'js', 'mitsubishimelcloud');?>

@@ -19,7 +19,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 				<br>
 				<span>{{Configuration}}</span>
 			</div>
-			<div class="cursor eqLogicAction" data-action="bt_Synch">
+			<div class="cursor eqLogicAction bt_Synch" data-action="bt_Synch">
 				<i class="fas fa-sync"></i>
 				<br/>
 				<span>{{Synchroniser}}</span>
