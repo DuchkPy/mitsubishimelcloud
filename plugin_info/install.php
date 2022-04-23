@@ -20,11 +20,11 @@ require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 
 /** Fonction exécutée automatiquement après l'installation du plugin */
   function mitsubishimelcloud_install() {
-    $cron = cron::byClassAndFunction('mitsubishimelcloud', 'pull');
+    $cron = cron::byClassAndFunction('mitsubishimelcloud', 'SynchronizeMELCloud');
     if (!is_object($cron)) {
       $cron = new cron();
       $cron->setClass('mitsubishimelcloud');
-      $cron->setFunction('pull');
+      $cron->setFunction('SynchronizeMELCloud');
       $cron->setEnable(1);
       $cron->setDeamon(0);
       $cron->setSchedule('*/5 * * * *');
@@ -45,11 +45,11 @@ require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 
 /** Fonction exécutée automatiquement après la mise à jour du plugin */
   function mitsubishimelcloud_update() {
-    $cron = cron::byClassAndFunction('mitsubishimelcloud', 'pull');
+    $cron = cron::byClassAndFunction('mitsubishimelcloud', 'SynchronizeMELCloud');
     if (!is_object($cron)) {
       $cron = new cron();
       $cron->setClass('mitsubishimelcloud');
-      $cron->setFunction('pull');
+      $cron->setFunction('SynchronizeMELCloud');
       $cron->setEnable(1);
       $cron->setDeamon(0);
       $cron->setSchedule('*/5 * * * *');
@@ -61,7 +61,7 @@ require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 
 /** Fonction exécutée automatiquement après la suppression du plugin */
   function mitsubishimelcloud_remove() {
-    $cron = cron::byClassAndFunction('mitsubishimelcloud', 'pull');
+    $cron = cron::byClassAndFunction('mitsubishimelcloud', 'SynchronizeMELCloud');
     if (is_object($cron)) {
       $cron->remove();
     }

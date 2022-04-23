@@ -103,6 +103,7 @@ $('.bt_Synch').off('click').on('click', function () {
     },
     success: function (data) {
       $('#div_alert').showAlert({message: '{{Synchronisation réussie.}}', level: 'success'});
+      window.location.reload();
     }
   });
 });
