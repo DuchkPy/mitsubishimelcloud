@@ -6,7 +6,7 @@
 		"en_US": "Plugin to manage Mitsubishi Electric heat pumps or ar conditioners equipped with MELCloud Wifi interface"
 	},
 	"licence" : "AGPLv3",
-	"author" : "DuckPy",
+	"author" : "DuchkPy",
 	"require" : "4.0",
 	"category" : "wellness",
 	"hasDependency" : false,
