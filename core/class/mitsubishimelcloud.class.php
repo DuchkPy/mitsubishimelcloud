@@ -114,7 +114,7 @@ class mitsubishimelcloud extends eqLogic
   }
 
   /** Write equipment information from Mitsubishi servers for each equipment */
-  private static function SynchronizeCommands($device) {
+  public static function SynchronizeCommands($device) {
     log::add(__CLASS__, 'debug', 'Synchronize : ' . $device['DeviceName']);
     if($device['DeviceID'] == '') return;
     log::add(__CLASS__, 'debug', $device['DeviceID'] . ' ' . $device['DeviceName']);
@@ -161,17 +161,17 @@ class mitsubishimelcloud extends eqLogic
             case 'On':
             case 'Off':
             case 'OperationMode':
-            case 'VaneVertical':
-            case 'VaneHorizontal':
+            case 'VaneVerticalDirection':
+            case 'VaneHorizontalDirection':
               // These commands doesn't need and update
               log::add(__CLASS__, 'debug', 'log : '.$cmd->getLogicalId().__(' : On ne traite pas cette commande', __FILE__));
               break;
             
             case 'SetTemperature_Value':
             case 'OperationMode_Value':
-            case 'SetFanSpeed_Value':
-            case 'VaneVertical_Value':
-            case 'VaneHorizontal_Value':
+            case 'FanSpeed_Value':
+            case 'VaneVerticalDirection_Value':
+            case 'VaneHorizontalDirection_Value':
               // We do the same operation for these 5 "xx_Value"
               $operation = str_replace('_Value', '', $cmd->getLogicalId());
               log::add(__CLASS__, 'debug', 'log : '.$cmd->getLogicalId().__(' pour ', __FILE__).$operation.__(' et la valeur ', __FILE__).$device['Device'][$operation]);
@@ -199,8 +199,8 @@ class mitsubishimelcloud extends eqLogic
               $cmd->save();
               break;
 
-            case 'SetFanSpeed':
-              log::add(__CLASS__, 'debug', __('log pour SetFanSpeed ', __FILE__).$cmd->getLogicalId().' '.$device['Device']['NumberOfFanSpeeds']);
+            case 'FanSpeed':
+              log::add(__CLASS__, 'debug', __('log pour FanSpeed : ', __FILE__).$cmd->getLogicalId().' '.$device['Device']['NumberOfFanSpeeds']);
               $cmd->setConfiguration('maxValue', $device['Device']['NumberOfFanSpeeds']);
               $cmd->save();
               break;
@@ -392,11 +392,11 @@ class mitsubishimelcloud extends eqLogic
           ->setSubType('message')
           ->setConfiguration(
               'listValue', 
-              '1|Chaud;2|Sechage;3|Froid;7|SetFanSpeed;8|Auto'
+              '1|Chaud;2|Sechage;3|Froid;7|Ventilation;8|Auto'
             )
           ->setDisplay(
               'slider_placeholder',
-              'Chaud : 1 Sechage : 2 froid : 3 SetFanSpeed : 7 Auto : 8'
+              'Chaud : 1 Sechage : 2 froid : 3 Ventilation : 7 Auto : 8'
             )
           ->setTemplate('dashboard', 'ModePAC')
           ->setTemplate('mobile', 'ModePAC')
@@ -407,11 +407,11 @@ class mitsubishimelcloud extends eqLogic
           $OperationMode->save();
         }
         
-        $SetFanSpeed_Value = $this->getCmd(null, 'SetFanSpeed_Value');
-        if(!is_object($SetFanSpeed_Value)) {
-          $SetFanSpeed_Value = (new mitsubishimelcloudCmd)
+        $FanSpeed_Value = $this->getCmd(null, 'FanSpeed_Value');
+        if(!is_object($FanSpeed_Value)) {
+          $FanSpeed_Value = (new mitsubishimelcloudCmd)
           ->setName(__('Valeur vitesse ventilation', __FILE__))
-          ->setLogicalId('SetFanSpeed_Value')
+          ->setLogicalId('FanSpeed_Value')
           ->setOrder(10)
           ->setIsVisible(0)
           ->setIsHistorized(1)
@@ -419,14 +419,14 @@ class mitsubishimelcloud extends eqLogic
           ->setSubType('numeric')
           ->setDisplay('generic_type', 'FAN_SPEED_STATE')
           ->setEqLogic_id($this->getId());
-          $SetFanSpeed_Value->save();
+          $FanSpeed_Value->save();
         }
         
-        $SetFanSpeed = $this->getCmd(null, 'SetFanSpeed');
-        if(!is_object($SetFanSpeed)) {
-          $SetFanSpeed = (new mitsubishimelcloudCmd)
+        $FanSpeed = $this->getCmd(null, 'FanSpeed');
+        if(!is_object($FanSpeed)) {
+          $FanSpeed = (new mitsubishimelcloudCmd)
           ->setName(__('Vitesse ventilation', __FILE__))
-          ->setLogicalId('SetFanSpeed')
+          ->setLogicalId('FanSpeed')
           ->setOrder(11)
           ->setIsVisible(1)
           ->setIsHistorized(0)
@@ -434,20 +434,20 @@ class mitsubishimelcloud extends eqLogic
           ->setSubType('slider')
           ->setConfiguration('minValue', 0)
           ->setConfiguration('maxValue', 5)
-          ->setTemplate('dashboard', 'SetFanSpeedPAC')
-          ->setTemplate('mobile', 'SetFanSpeedPAC')
+          ->setTemplate('dashboard', 'FanSpeedPAC')
+          ->setTemplate('mobile', 'FanSpeedPAC')
           ->setDisplay('generic_type', 'FAN_SPEED')
-          ->setConfiguration('updateCmdId', $SetFanSpeed_Value->getEqLogic_id())
-          ->setValue($SetFanSpeed_Value->getId())
+          ->setConfiguration('updateCmdId', $FanSpeed_Value->getEqLogic_id())
+          ->setValue($FanSpeed_Value->getId())
           ->setEqLogic_id($this->getId());
-          $SetFanSpeed->save();
+          $FanSpeed->save();
         }
         
-        $VaneVertical_Value = $this->getCmd(null, 'VaneVertical_Value');
-        if(!is_object($VaneVertical_Value)) {
-          $VaneVertical_Value = (new mitsubishimelcloudCmd)
+        $VaneVerticalDirection_Value = $this->getCmd(null, 'VaneVerticalDirection_Value');
+        if(!is_object($VaneVerticalDirection_Value)) {
+          $VaneVerticalDirection_Value = (new mitsubishimelcloudCmd)
           ->setName(__('Valeur position ailettes verticales', __FILE__))
-          ->setLogicalId('VaneVertical_Value')
+          ->setLogicalId('VaneVerticalDirection_Value')
           ->setOrder(12)
           ->setIsVisible(0)
           ->setIsHistorized(1)
@@ -455,19 +455,19 @@ class mitsubishimelcloud extends eqLogic
           ->setSubType('numeric')
           ->setDisplay('generic_type', 'ROTATION_STATE')
           ->setEqLogic_id($this->getId());
-          $VaneVertical_Value->save();
+          $VaneVerticalDirection_Value->save();
         }
         
-        $VaneVertical = $this->getCmd(null, 'VaneVertical');
-        if(!is_object($VaneVertical)) {
-          $VaneVertical = (new mitsubishimelcloudCmd)
+        $VaneVerticalDirection = $this->getCmd(null, 'VaneVerticalDirection');
+        if(!is_object($VaneVerticalDirection)) {
+          $VaneVerticalDirection = (new mitsubishimelcloudCmd)
           ->setName(__('Position ailettes verticales', __FILE__))
-          ->setLogicalId('VaneVertical')
+          ->setLogicalId('VaneVerticalDirection')
           ->setOrder(13)
           ->setIsVisible(1)
           ->setIsHistorized(0)
           ->setType('action')
-          ->setSubType('message')
+          ->setSubType('slider')
           ->setConfiguration(
               'listValue', 
               '0|Auto;1|1;2|2;3|3;4|4;5|5;7|Basculer'
@@ -476,20 +476,20 @@ class mitsubishimelcloud extends eqLogic
               'slider_placeholder',
               'Auto : 0 1 : 1 2 : 2 3 : 3 4 : 4 5 : 5 Basculer : 7'
             )
-          ->setTemplate('dashboard', 'VaneVerticalPAC')
-          ->setTemplate('mobile', 'VaneVerticalPAC')
+          ->setTemplate('dashboard', 'VaneVerticalDirectionPAC')
+          ->setTemplate('mobile', 'VaneVerticalDirectionPAC')
           ->setDisplay('generic_type', 'ROTATION')
-          ->setConfiguration('updateCmdId', $VaneVertical_Value->getEqLogic_id())
-          ->setValue($VaneVertical_Value->getId())
+          ->setConfiguration('updateCmdId', $VaneVerticalDirection_Value->getEqLogic_id())
+          ->setValue($VaneVerticalDirection_Value->getId())
           ->setEqLogic_id($this->getId());
-          $VaneVertical->save();
+          $VaneVerticalDirection->save();
         }
         
-        $VaneHorizontal_Value = $this->getCmd(null, 'VaneHorizontal_Value');
-        if(!is_object($VaneHorizontal_Value)) {
-          $VaneHorizontal_Value = (new mitsubishimelcloudCmd)
+        $VaneHorizontalDirection_Value = $this->getCmd(null, 'VaneHorizontalDirection_Value');
+        if(!is_object($VaneHorizontalDirection_Value)) {
+          $VaneHorizontalDirection_Value = (new mitsubishimelcloudCmd)
           ->setName(__('Valeur position ailettes horizontales', __FILE__))
-          ->setLogicalId('VaneHorizontal_Value')
+          ->setLogicalId('VaneHorizontalDirection_Value')
           ->setOrder(14)
           ->setIsVisible(0)
           ->setIsHistorized(1)
@@ -497,19 +497,19 @@ class mitsubishimelcloud extends eqLogic
           ->setSubType('numeric')
           ->setDisplay('generic_type', 'ROTATION_STATE')
           ->setEqLogic_id($this->getId());
-          $VaneHorizontal_Value->save();
+          $VaneHorizontalDirection_Value->save();
         }
         
-        $VaneHorizontal = $this->getCmd(null, 'VaneHorizontal');
-        if(!is_object($VaneHorizontal)) {
-          $VaneHorizontal = (new mitsubishimelcloudCmd)
+        $VaneHorizontalDirection = $this->getCmd(null, 'VaneHorizontalDirection');
+        if(!is_object($VaneHorizontalDirection)) {
+          $VaneHorizontalDirection = (new mitsubishimelcloudCmd)
           ->setName(__('Position ailettes horizontal', __FILE__))
-          ->setLogicalId('VaneHorizontal')
+          ->setLogicalId('VaneHorizontalDirection')
           ->setOrder(15)
           ->setIsVisible(1)
           ->setIsHistorized(0)
           ->setType('action')
-          ->setSubType('message')
+          ->setSubType('slider')
           ->setConfiguration(
               'listValue', 
               '0|Auto;1|1;2|2;3|3;4|4;5|5;12|Basculer'
@@ -518,13 +518,13 @@ class mitsubishimelcloud extends eqLogic
               'slider_placeholder',
               'Auto : 0 1 : 1 2 : 2 3 : 3 4 : 4 5 : 5 Basculer : 12'
             )
-          ->setTemplate('dashboard', 'VaneVerticalPAC')
-          ->setTemplate('mobile', 'VaneVerticalPAC')
+          ->setTemplate('dashboard', 'VaneVerticalDirectionPAC')
+          ->setTemplate('mobile', 'VaneVerticalDirectionPAC')
           ->setDisplay('generic_type', 'ROTATION')
-          ->setConfiguration('updateCmdId', $VaneHorizontal_Value->getEqLogic_id())
-          ->setValue($VaneHorizontal_Value->getId())
+          ->setConfiguration('updateCmdId', $VaneHorizontalDirection_Value->getEqLogic_id())
+          ->setValue($VaneHorizontalDirection_Value->getId())
           ->setEqLogic_id($this->getId());
-          $VaneHorizontal->save();
+          $VaneHorizontalDirection->save();
         }
       } elseif ($this->getConfiguration('typepac') == 'air/eau') {
         log::add(__CLASS__, 'error', __('Non supporté par le plugin pour le moment. Merci de contacter le développeur', __FILE__));
@@ -540,7 +540,9 @@ class mitsubishimelcloud extends eqLogic
 class mitsubishimelcloudCmd extends cmd
 {
   // Exécution d'une commande  
-  public function execute($_options = array())
-  {
+  public function execute($_options = array()) {
+    if('refresh' == $this->logicalId) {
+      mitsubishimelcloud::SynchronizeMELCloud();
+    }
   }
 }
