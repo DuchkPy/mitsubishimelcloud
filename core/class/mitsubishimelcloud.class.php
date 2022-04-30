@@ -503,7 +503,7 @@ class mitsubishimelcloud extends eqLogic
         $VaneHorizontal = $this->getCmd(null, 'VaneHorizontal');
         if(!is_object($VaneHorizontal)) {
           $VaneHorizontal = (new mitsubishimelcloudCmd)
-          ->setName(__('Position ailettes verticales', __FILE__))
+          ->setName(__('Position ailettes horizontal', __FILE__))
           ->setLogicalId('VaneHorizontal')
           ->setOrder(15)
           ->setIsVisible(1)
