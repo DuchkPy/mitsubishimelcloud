@@ -278,8 +278,8 @@ class mitsubishimelcloud extends eqLogic
         ->setIsHistorized(0)
         ->setType('action')
         ->setSubType('other')
-        ->setTemplate('dashboard', 'OnOffPAC')
-        ->setTemplate('mobile', 'OnOffPAC')
+        ->setTemplate('dashboard', 'OnOffMitsubishi')
+        ->setTemplate('mobile', 'OnOffMitsubishi')
         ->setDisplay('generic_type', 'ENERGY_ON')
         ->setConfiguration('updateCmdId', $PowerState->getEqLogic_id())
         ->setConfiguration('updateCmdToValue', 1)
@@ -297,8 +297,8 @@ class mitsubishimelcloud extends eqLogic
         ->setIsHistorized(0)
         ->setType('action')
         ->setSubType('other')
-        ->setTemplate('dashboard', 'OnOffPAC')
-        ->setTemplate('mobile', 'OnOffPAC')
+        ->setTemplate('dashboard', 'OnOffMitsubishi')
+        ->setTemplate('mobile', 'OnOffMitsubishi')
         ->setDisplay('generic_type', 'ENERGY_OFF')
         ->setConfiguration('updateCmdId', $PowerState->getEqLogic_id())
         ->setConfiguration('updateCmdToValue', 0)
@@ -311,7 +311,7 @@ class mitsubishimelcloud extends eqLogic
         $RoomTemperature = $this->getCmd(null, 'RoomTemperature');
         if(!is_object($RoomTemperature)) {
           $RoomTemperature = (new mitsubishimelcloudCmd)
-          ->setName(__('Température sonde', __FILE__))
+          ->setName(__('Température de la pièce', __FILE__))
           ->setLogicalId('RoomTemperature')
           ->setOrder(5)
           ->setIsVisible(1)
@@ -319,8 +319,8 @@ class mitsubishimelcloud extends eqLogic
           ->setType('info')
           ->setSubType('numeric')
           ->setUnite('°C')
-          ->setTemplate('dashboard', 'TemperaturePAC')
-          ->setTemplate('mobile', 'TemperaturePAC')
+          ->setTemplate('dashboard', 'TemperatureMitsubishi')
+          ->setTemplate('mobile', 'TemperatureMitsubishi')
           ->setDisplay('generic_type', 'THERMOSTAT_TEMPERATURE')
           ->setEqLogic_id($this->getId());
           $RoomTemperature->save();
@@ -356,8 +356,8 @@ class mitsubishimelcloud extends eqLogic
           ->setConfiguration('maxValue', 30)
           ->setConfiguration('step', 1)
           ->setUnite('°C')
-          ->setTemplate('dashboard', 'TemperaturePAC')
-          ->setTemplate('mobile', 'TemperaturePAC')
+          ->setTemplate('dashboard', 'TemperatureMitsubishi')
+          ->setTemplate('mobile', 'TemperatureMitsubishi')
           ->setDisplay('generic_type', 'THERMOSTAT_SETPOINT')
           ->setConfiguration('updateCmdId', $SetTemperature_Value->getEqLogic_id())
           ->setValue($SetTemperature_Value->getId())
@@ -398,8 +398,8 @@ class mitsubishimelcloud extends eqLogic
               'slider_placeholder',
               'Chaud : 1 Sechage : 2 froid : 3 Ventilation : 7 Auto : 8'
             )
-          ->setTemplate('dashboard', 'ModePAC')
-          ->setTemplate('mobile', 'ModePAC')
+          ->setTemplate('dashboard', 'ModeMitsubishi')
+          ->setTemplate('mobile', 'ModeMitsubishi')
           ->setDisplay('generic_type', 'THERMOSTAT_SET_MODE')
           ->setConfiguration('updateCmdId', $OperationMode_Value->getEqLogic_id())
           ->setValue($OperationMode_Value->getId())
@@ -434,8 +434,8 @@ class mitsubishimelcloud extends eqLogic
           ->setSubType('slider')
           ->setConfiguration('minValue', 0)
           ->setConfiguration('maxValue', 5)
-          ->setTemplate('dashboard', 'FanSpeedPAC')
-          ->setTemplate('mobile', 'FanSpeedPAC')
+          ->setTemplate('dashboard', 'FanSpeedMitsubishi')
+          ->setTemplate('mobile', 'FanSpeedMitsubishi')
           ->setDisplay('generic_type', 'FAN_SPEED')
           ->setConfiguration('updateCmdId', $FanSpeed_Value->getEqLogic_id())
           ->setValue($FanSpeed_Value->getId())
@@ -476,8 +476,8 @@ class mitsubishimelcloud extends eqLogic
               'slider_placeholder',
               'Auto : 0 1 : 1 2 : 2 3 : 3 4 : 4 5 : 5 Basculer : 7'
             )
-          ->setTemplate('dashboard', 'VaneVerticalDirectionPAC')
-          ->setTemplate('mobile', 'VaneVerticalDirectionPAC')
+          ->setTemplate('dashboard', 'VaneVerticalDirectionMitsubishi')
+          ->setTemplate('mobile', 'VaneVerticalDirectionMitsubishi')
           ->setDisplay('generic_type', 'ROTATION')
           ->setConfiguration('updateCmdId', $VaneVerticalDirection_Value->getEqLogic_id())
           ->setValue($VaneVerticalDirection_Value->getId())
@@ -518,8 +518,8 @@ class mitsubishimelcloud extends eqLogic
               'slider_placeholder',
               'Auto : 0 1 : 1 2 : 2 3 : 3 4 : 4 5 : 5 Basculer : 12'
             )
-          ->setTemplate('dashboard', 'VaneVerticalDirectionPAC')
-          ->setTemplate('mobile', 'VaneVerticalDirectionPAC')
+          ->setTemplate('dashboard', 'VaneVerticalDirectionMitsubishi')
+          ->setTemplate('mobile', 'VaneVerticalDirectionMitsubishi')
           ->setDisplay('generic_type', 'ROTATION')
           ->setConfiguration('updateCmdId', $VaneHorizontalDirection_Value->getEqLogic_id())
           ->setValue($VaneHorizontalDirection_Value->getId())
