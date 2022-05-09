@@ -1,0 +1,158 @@
+.CommandBlock {
+  width: 320px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1.34em;
+  margin-bottom: 10px;
+}
+
+.CommandTitle {
+  color: white;
+  text-shadow: rgb(128, 128, 128) 0px 1px 0px;
+  font-size: 18px;
+  font-weight: normal;
+  text-align: left;
+  display: block;
+  margin: 8px 0 .4em;
+  padding-left: 12px;
+  padding-right: 10px;
+  line-height: 23px;
+}
+
+.CommandControls {
+  color: white;
+  text-shadow: rgb(128, 128, 128) 0px 1px 0px;
+  width: 320px;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  border: 1px solid rgb(87, 119, 142);
+  background-color: rgb(130, 155, 175);
+  box-shadow: rgba(115, 141, 158, 0.8) 0px 1px 1px 1px inset;
+  border-radius: 10px;
+  padding-left: 5px;
+  padding-top: 10px;
+}
+
+.HoriZone {
+  width: 294px;
+  height: 47px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding-top: 6px;
+  padding-bottom: 8px;
+  border-radius: 8px;
+  padding-left: 10px;
+  text-align: left;
+}
+
+.VertiBoutonZone {
+  display: inline-block;
+  padding-left: 1px;
+}
+
+.VertiZone {
+  float: left;
+  clear: none;
+  width: 61px;
+  height: 85px;
+  padding-right: 11px;
+}
+
+.VertiBouton {
+  height: 75px;
+  width: 50px;
+  border-width: 0px;
+  border-radius: 0.6em;
+  text-shadow: none;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  padding: 0px;
+}
+
+.VertiBouton:hover {
+  background-color: rgb(138, 164, 185);
+  cursor: pointer;
+}
+
+.VertiBouton::after {
+  content: '';
+  position: relative;
+  display: block;
+  top: 20px;
+}
+
+.ZoneOff {
+  background-color: rgb(116, 140, 160);
+}
+
+.ZoneOn {
+  background-color: rgb(138, 164, 185);
+}
+
+.VertiImg {
+  width: 35px;
+  margin-top: 20px;
+  position: relative;
+}
+
+.HiddenInput {
+  z-index: 1;
+  position: relative;
+  bottom: -25px;
+}
+
+/* Background images related to specific ID */
+#BoutonMode_1::after {
+  background-image: url("../../../data/img/Operate_off_Ata_1.png");
+  background-size: 35px 35px;
+  width: 35px;
+  height: 35px;
+  top: 20px;
+}
+#BoutonMode_1:hover::after, #BoutonMode_1.ZoneOn::after {
+  background-image: url("../../../data/img/Operate_on_Ata_1.png");
+}
+
+#BoutonMode_2::after {
+  background-image: url("../../../data/img/Operate_off_Ata_2.png");
+  background-size: 35px 35px;
+  width: 35px;
+  height: 35px;
+  top: 20px;
+}
+#BoutonMode_2:hover::after, #BoutonMode_2.ZoneOn::after {
+  background-image: url("../../../data/img/Operate_on_Ata_2.png");
+}
+
+#BoutonMode_3::after {
+  background-image: url("../../../data/img/Operate_off_Ata_3.png");
+  background-size: 35px 35px;
+  width: 35px;
+  height: 35px;
+  top: 20px;
+}
+#BoutonMode_3:hover::after, #BoutonMode_3.ZoneOn::after {
+  background-image: url("../../../data/img/Operate_on_Ata_3.png");
+}
+
+#BoutonMode_7::after {
+  background-image: url("../../../data/img/Operate_off_Ata_7.png");
+  background-size: 35px 35px;
+  width: 35px;
+  height: 35px;
+  top: 20px;
+}
+#BoutonMode_7:hover::after, #BoutonMode_7.ZoneOn::after {
+  background-image: url("../../../data/img/Operate_on_Ata_7.png");
+}
+
+#BoutonMode_8::after {
+  background-image: url("../../../data/img/Operate_off_Ata_8.png");
+  background-size: 35px 35px;
+  width: 35px;
+  height: 35px;
+  top: 20px;
+}
+#BoutonMode_8:hover::after, #BoutonMode_8.ZoneOn::after {
+  background-image: url("../../../data/img/Operate_on_Ata_8.png");
+}

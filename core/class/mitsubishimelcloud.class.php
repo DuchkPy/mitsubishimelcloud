@@ -389,15 +389,9 @@ class mitsubishimelcloud extends eqLogic
           ->setIsVisible(1)
           ->setIsHistorized(0)
           ->setType('action')
-          ->setSubType('message')
-          ->setConfiguration(
-              'listValue', 
-              '1|Chaud;2|Sechage;3|Froid;7|Ventilation;8|Auto'
-            )
-          ->setDisplay(
-              'slider_placeholder',
-              'Chaud : 1 Sechage : 2 froid : 3 Ventilation : 7 Auto : 8'
-            )
+          ->setSubType('slider')
+          ->setConfiguration('minValue', 1)
+          ->setConfiguration('maxValue', 8)
           ->setTemplate('dashboard', 'ModeMitsubishi')
           ->setTemplate('mobile', 'ModeMitsubishi')
           ->setDisplay('generic_type', 'THERMOSTAT_SET_MODE')
@@ -543,6 +537,9 @@ class mitsubishimelcloudCmd extends cmd
   public function execute($_options = array()) {
     if('refresh' == $this->logicalId) {
       mitsubishimelcloud::SynchronizeMELCloud();
+    }
+    if('OperationMode' == $this->logicalId) {
+      log::add('mitsubishimelcloud', 'debug', 'New order requested, value : '.$_options['message']);
     }
   }
 }
