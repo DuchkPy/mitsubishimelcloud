@@ -29,10 +29,8 @@
   
     <script>
       // Button coloration & selected fan speed
-      var FanSpeedCorresp#id# = {'1':'{{Mode chaud}}','3':'{{Mode froid}}','2':'{{Séchage}}','7':'{{FanSpeedation}}','8':'{{Auto}}'};
-      document.getElementById("ButtonFanSpeed_#state#").classList.add("ZoneOn");
-      document.getElementById("SpanFanSpeed_#state#").classList.add("ZoneOn");
-      //document.getElementById("SelectedFanSpeed").textContent=FanSpeedCorresp#id#['#state#'];
+      $(".FanSelection#id# #ButtonFanSpeed_#state#").addClass("ZoneOn");
+      $(".FanSelection#id# #SpanFanSpeed_#state#").addClass("ZoneOn");
       // Send selected fan speed to Melcloud
       $(".FanSelection#id# label").click(function(){
         jeedom.cmd.execute({id: '#id#', value: {message: parseInt($(this).attr('data-key'))}, notify:true});

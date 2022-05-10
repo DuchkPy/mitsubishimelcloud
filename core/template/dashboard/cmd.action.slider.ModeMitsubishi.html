@@ -5,7 +5,7 @@
     <div class="CommandControls">
       <div class="HoriZone ZoneOn">
         <img src="plugins/mitsubishimelcloud/data/img/Operate_on_Ata_#state#.png" style="width: 35px; margin-left:10px; margin-top: 5px;" />
-        <span id="SelectedMode">TBD</span>
+        <span class="SelectedMode SelectedMode_#id#">TBD</span>
       </div>
       <div class="VertiButtonZone ModeSelection#id#">
         <div class="VertiZone"><label class="VertiButton ZoneOff" for="Mode_3" id="ButtonMode_3" data-key="3">
@@ -25,8 +25,9 @@
   <script>
     // Button coloration & selected mode name
     var ModeCorresp#id# = {'1':'{{Mode chaud}}','3':'{{Mode froid}}','2':'{{Séchage}}','7':'{{Ventilation}}','8':'{{Auto}}'};
-    document.getElementById("ButtonMode_#state#").classList.add("ZoneOn");
-    document.getElementById("SelectedMode").textContent=ModeCorresp#id#['#state#'];
+    $(".ModeSelection#id# #ButtonMode_#state#").addClass("ZoneOn");
+    $('.SelectedMode_#id#').text(ModeCorresp#id#[#state#]);
+    
     // Send selected mode to Melcloud
     $(".ModeSelection#id# label").click(function(){
       jeedom.cmd.execute({id: '#id#', value: {message: parseInt($(this).attr('data-key'))}, notify:true});
