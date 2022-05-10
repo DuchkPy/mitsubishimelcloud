@@ -38,6 +38,17 @@
   height: 47px;
   margin-right: 10px;
   margin-bottom: 10px;
+  /* padding-top: 6px; */
+  padding-bottom: 8px;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.HoriButton {
+  width: 294px;
+  height: 47px;
+  margin-right: 10px;
+  margin-bottom: 10px;
   padding-top: 6px;
   padding-bottom: 8px;
   border-radius: 8px;
@@ -45,7 +56,18 @@
   text-align: left;
 }
 
-.VertiBoutonZone {
+.HoriButton::before {
+  content: '';
+  position: relative;
+  display: inline-block;
+}
+
+.HoriButton:hover {
+  background-color: rgb(138, 164, 185);
+  cursor: pointer;
+}
+
+.VertiButtonZone {
   display: inline-block;
   padding-left: 1px;
 }
@@ -58,7 +80,7 @@
   padding-right: 11px;
 }
 
-.VertiBouton {
+.VertiButton {
   height: 75px;
   width: 50px;
   border-width: 0px;
@@ -69,12 +91,12 @@
   padding: 0px;
 }
 
-.VertiBouton:hover {
+.VertiButton:hover {
   background-color: rgb(138, 164, 185);
   cursor: pointer;
 }
 
-.VertiBouton::after {
+.VertiButton::after {
   content: '';
   position: relative;
   display: block;
@@ -95,64 +117,149 @@
   position: relative;
 }
 
-.HiddenInput {
-  z-index: 1;
+#SelectedMode {
+  display: block;
+  margin-top: -25px;
+  margin-left: 50px;
+}
+
+.FanSpeedSpanVerti {
+  background: transparent;
   position: relative;
-  bottom: -25px;
+  top: 14px;
+}
+
+.FanSpeedSpanHori {
+  background: transparent;
+  position: relative;
+  top: -10px;
+}
+
+.FanSpeedSpanVerti:hover .FanSpeedSpanHori:hover {
+  cursor: pointer;
 }
 
 /* Background images related to specific ID */
-#BoutonMode_1::after {
+  /* Mode */
+#ButtonMode_1::after {
   background-image: url("../../../data/img/Operate_off_Ata_1.png");
   background-size: 35px 35px;
   width: 35px;
   height: 35px;
   top: 20px;
 }
-#BoutonMode_1:hover::after, #BoutonMode_1.ZoneOn::after {
+#ButtonMode_1:hover::after, #ButtonMode_1.ZoneOn::after {
   background-image: url("../../../data/img/Operate_on_Ata_1.png");
 }
 
-#BoutonMode_2::after {
+#ButtonMode_2::after {
   background-image: url("../../../data/img/Operate_off_Ata_2.png");
   background-size: 35px 35px;
   width: 35px;
   height: 35px;
   top: 20px;
 }
-#BoutonMode_2:hover::after, #BoutonMode_2.ZoneOn::after {
+#ButtonMode_2:hover::after, #ButtonMode_2.ZoneOn::after {
   background-image: url("../../../data/img/Operate_on_Ata_2.png");
 }
 
-#BoutonMode_3::after {
+#ButtonMode_3::after {
   background-image: url("../../../data/img/Operate_off_Ata_3.png");
   background-size: 35px 35px;
   width: 35px;
   height: 35px;
   top: 20px;
 }
-#BoutonMode_3:hover::after, #BoutonMode_3.ZoneOn::after {
+#ButtonMode_3:hover::after, #ButtonMode_3.ZoneOn::after {
   background-image: url("../../../data/img/Operate_on_Ata_3.png");
 }
 
-#BoutonMode_7::after {
+#ButtonMode_7::after {
   background-image: url("../../../data/img/Operate_off_Ata_7.png");
   background-size: 35px 35px;
   width: 35px;
   height: 35px;
   top: 20px;
 }
-#BoutonMode_7:hover::after, #BoutonMode_7.ZoneOn::after {
+#ButtonMode_7:hover::after, #ButtonMode_7.ZoneOn::after {
   background-image: url("../../../data/img/Operate_on_Ata_7.png");
 }
 
-#BoutonMode_8::after {
+#ButtonMode_8::after {
   background-image: url("../../../data/img/Operate_off_Ata_8.png");
   background-size: 35px 35px;
   width: 35px;
   height: 35px;
   top: 20px;
 }
-#BoutonMode_8:hover::after, #BoutonMode_8.ZoneOn::after {
+#ButtonMode_8:hover::after, #ButtonMode_8.ZoneOn::after {
+  background-image: url("../../../data/img/Operate_on_Ata_8.png");
+}
+
+
+  /* Fan speed */
+#ButtonFanSpeed_1::after {
+  background-image: url("../../../data/img/Fan_speed_off_Ata_1.png");
+  background-size: 35px 35px;
+  width: 35px;
+  height: 35px;
+  top: 25px;
+}
+#ButtonFanSpeed_1:hover::after, #ButtonFanSpeed_1.ZoneOn::after {
+  background-image: url("../../../data/img/Fan_speed_on_Ata_1.png");
+}
+
+#ButtonFanSpeed_2::after {
+  background-image: url("../../../data/img/Fan_speed_off_Ata_2.png");
+  background-size: 35px 35px;
+  width: 35px;
+  height: 35px;
+  top: 25px;
+}
+#ButtonFanSpeed_2:hover::after, #ButtonFanSpeed_2.ZoneOn::after {
+  background-image: url("../../../data/img/Fan_speed_on_Ata_2.png");
+}
+
+#ButtonFanSpeed_3::after {
+  background-image: url("../../../data/img/Fan_speed_off_Ata_3.png");
+  background-size: 35px 35px;
+  width: 35px;
+  height: 35px;
+  top: 25px;
+}
+#ButtonFanSpeed_3:hover::after, #ButtonFanSpeed_3.ZoneOn::after {
+  background-image: url("../../../data/img/Fan_speed_on_Ata_3.png");
+}
+
+#ButtonFanSpeed_4::after {
+  background-image: url("../../../data/img/Fan_speed_off_Ata_4.png");
+  background-size: 35px 35px;
+  width: 35px;
+  height: 35px;
+  top: 25px;
+}
+#ButtonFanSpeed_4:hover::after, #ButtonFanSpeed_4.ZoneOn::after {
+  background-image: url("../../../data/img/Fan_speed_on_Ata_4.png");
+}
+
+#ButtonFanSpeed_5::after {
+  background-image: url("../../../data/img/Fan_speed_off_Ata_5.png");
+  background-size: 35px 35px;
+  width: 35px;
+  height: 35px;
+  top: 25px;
+}
+#ButtonFanSpeed_5:hover::after, #ButtonFanSpeed_5.ZoneOn::after {
+  background-image: url("../../../data/img/Fan_speed_on_Ata_5.png");
+}
+
+#ButtonFanSpeed_0::before {
+  background-image: url("../../../data/img/Operate_off_Ata_8.png");
+  background-size: 35px 35px;
+  width: 35px;
+  height: 35px;
+  top: 2.5px;
+}
+#ButtonFanSpeed_0:hover::before, #ButtonFanSpeed_0.ZoneOn::before {
   background-image: url("../../../data/img/Operate_on_Ata_8.png");
 }

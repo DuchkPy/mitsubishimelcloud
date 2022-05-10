@@ -1,22 +1,22 @@
-<div class="cmd tooltips cmd cmd-widget ModeMitsubishi#id#"  data-type="action" data-subtype="message" data-cmd_id="#id#" data-cmd_uid="#uid#" style="width: 334px; background-color: #6b92ab;">
+<div class="cmd tooltips cmd cmd-widget ModeMitsubishi#id#"  data-type="action" data-subtype="slider" data-cmd_id="#id#" data-cmd_uid="#uid#" style="width: 330px; background-color: #6b92ab;">
   <link rel="stylesheet" href="plugins/mitsubishimelcloud/core/template/css/mitsubishimelcloud.css"/>
   <div class="CommandBlock">
-    <div class="CommandTitle">Mode</div>
+    <div class="CommandTitle">{{Mode}}</div>
     <div class="CommandControls">
       <div class="HoriZone ZoneOn">
-        <img src="plugins/mitsubishimelcloud/data/img/Operate_on_Ata_#state#.png" style="width: 35px;" />
+        <img src="plugins/mitsubishimelcloud/data/img/Operate_on_Ata_#state#.png" style="width: 35px; margin-left:10px; margin-top: 5px;" />
         <span id="SelectedMode">TBD</span>
       </div>
-      <div class="VertiBoutonZone modeListe#id#">
-        <div class="VertiZone"><label class="VertiBouton ZoneOff" for="Mode_3" id="BoutonMode_3" data-key="3">
+      <div class="VertiButtonZone ModeSelection#id#">
+        <div class="VertiZone"><label class="VertiButton ZoneOff" for="Mode_3" id="ButtonMode_3" data-key="3">
         </label></div>
-        <div class="VertiZone"><label class="VertiBouton ZoneOff" for="Mode_2" id="BoutonMode_2" data-key="2">
+        <div class="VertiZone"><label class="VertiButton ZoneOff" for="Mode_2" id="ButtonMode_2" data-key="2">
         </label></div>
-        <div class="VertiZone"><label class="VertiBouton ZoneOff" for="Mode_7" id="BoutonMode_7" data-key="7">
+        <div class="VertiZone"><label class="VertiButton ZoneOff" for="Mode_7" id="ButtonMode_7" data-key="7">
         </label></div>
-        <div class="VertiZone"><label class="VertiBouton ZoneOff" for="Mode_8" id="BoutonMode_8" data-key="8">
+        <div class="VertiZone"><label class="VertiButton ZoneOff" for="Mode_8" id="ButtonMode_8" data-key="8">
         </label></div>
-        <div class="VertiZone"><label class="VertiBouton ZoneOff" for="Mode_1" id="BoutonMode_1" data-key="1">
+        <div class="VertiZone"><label class="VertiButton ZoneOff" for="Mode_1" id="ButtonMode_1" data-key="1">
         </label></div>
       </div>
     </div>
@@ -25,10 +25,10 @@
   <script>
     // Button coloration & selected mode name
     var ModeCorresp#id# = {'1':'{{Mode chaud}}','3':'{{Mode froid}}','2':'{{Séchage}}','7':'{{Ventilation}}','8':'{{Auto}}'};
-    document.getElementById("BoutonMode_#state#").classList.add("ZoneOn");
+    document.getElementById("ButtonMode_#state#").classList.add("ZoneOn");
     document.getElementById("SelectedMode").textContent=ModeCorresp#id#['#state#'];
     // Send selected mode to Melcloud
-    $(".modeListe#id# label").click(function(){
+    $(".ModeSelection#id# label").click(function(){
       jeedom.cmd.execute({id: '#id#', value: {message: parseInt($(this).attr('data-key'))}, notify:true});
     });
   </script>

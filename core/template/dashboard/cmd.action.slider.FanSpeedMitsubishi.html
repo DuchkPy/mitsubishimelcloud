@@ -1,0 +1,41 @@
+<div class="cmd tooltips cmd cmd-widget FanSpeedMitsubishi#id#"  data-type="action" data-subtype="slider" data-cmd_id="#id#" data-cmd_uid="#uid#" style="width: 330px; background-color: #6b92ab;">
+    <link rel="stylesheet" href="plugins/mitsubishimelcloud/core/template/css/mitsubishimelcloud.css"/>
+    <div class="CommandBlock">
+      <div class="CommandTitle">{{Vitesse de Ventilation}}</div>
+      <div class="CommandControls">
+        <div class="VertiButtonZone FanSelection#id#">
+          <div class="VertiZone"><label class="VertiButton ZoneOff" for="FanSpeed_1" id="ButtonFanSpeed_1" data-key="1">
+            <span class="FanSpeedSpanVerti" id="SpanFanSpeed_1">1</span>
+          </label></div>
+          <div class="VertiZone"><label class="VertiButton ZoneOff" for="FanSpeed_2" id="ButtonFanSpeed_2" data-key="2">
+            <span class="FanSpeedSpanVerti" id="SpanFanSpeed_2">2</span>
+          </label></div>
+          <div class="VertiZone"><label class="VertiButton ZoneOff" for="FanSpeed_3" id="ButtonFanSpeed_3" data-key="3">
+            <span class="FanSpeedSpanVerti" id="SpanFanSpeed_3">3</span>
+          </label></div>
+          <div class="VertiZone"><label class="VertiButton ZoneOff" for="FanSpeed_4" id="ButtonFanSpeed_4" data-key="4">
+            <span class="FanSpeedSpanVerti" id="SpanFanSpeed_4">4</span>
+          </label></div>
+          <div class="VertiZone"><label class="VertiButton ZoneOff" for="FanSpeed_5" id="ButtonFanSpeed_5" data-key="5">
+            <span class="FanSpeedSpanVerti" id="SpanFanSpeed_5">5</span>
+          </label></div>
+        </div>
+        <div class="HoriZone FanSelection#id#"><label class="HoriButton ZoneOff" for="FanSpeed_0" id="ButtonFanSpeed_0" data-key="0">
+            <span class="FanSpeedSpanHori" id="SpanFanSpeed_0">Auto</span>
+        </label>
+        </div>
+      </div>
+    </div>
+  
+    <script>
+      // Button coloration & selected fan speed
+      var FanSpeedCorresp#id# = {'1':'{{Mode chaud}}','3':'{{Mode froid}}','2':'{{Séchage}}','7':'{{FanSpeedation}}','8':'{{Auto}}'};
+      document.getElementById("ButtonFanSpeed_#state#").classList.add("ZoneOn");
+      document.getElementById("SpanFanSpeed_#state#").classList.add("ZoneOn");
+      //document.getElementById("SelectedFanSpeed").textContent=FanSpeedCorresp#id#['#state#'];
+      // Send selected fan speed to Melcloud
+      $(".FanSelection#id# label").click(function(){
+        jeedom.cmd.execute({id: '#id#', value: {message: parseInt($(this).attr('data-key'))}, notify:true});
+      });
+    </script>
+  </div>
