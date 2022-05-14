@@ -529,6 +529,49 @@ class mitsubishimelcloud extends eqLogic
       }
     }
   }
+
+  /** Collect data to design the widget */
+  public function toHtml($_version = 'dashboard') {
+    $replace = $this->preToHtml($_version);
+    if (!is_array($replace)) {
+      return $replace;
+    }
+    $version = jeedom::versionAlias($_version);
+
+    $replace['#TemplateWidth#'] = 818;
+    $replace['#TemplateHeight#'] = 640;
+
+    $OperationMode_Value = $this->getCmd(null, 'OperationMode_Value');
+    $replace['#OperationMode_Value#'] = is_object($OperationMode_Value) ? $OperationMode_Value->execCmd() : '';
+
+    $FanSpeed_Value = $this->getCmd(null, 'FanSpeed_Value');
+    $replace['#FanSpeed_Value#'] = is_object($FanSpeed_Value) ? $FanSpeed_Value->execCmd() : '';
+
+    $HoriVane_Value = $this->getCmd(null, 'VaneHorizontalDirection_Value');
+    $replace['#HoriVane_Value#'] = is_object($HoriVane_Value) ? $HoriVane_Value->execCmd() : '';
+
+    $VertiVane_Value = $this->getCmd(null, 'VaneVerticalDirection_Value');
+    $replace['#VertiVane_Value#'] = is_object($VertiVane_Value) ? $VertiVane_Value->execCmd() : '';
+
+    $refresh = $this->getCmd(null, 'refresh');
+    $replace['#refresh#'] = is_object($refresh) ? $refresh->getId() : '';
+
+    // Title :
+    $replace['#MitsuMelcloudName#'] = $this->getName();
+    $replace['#Scenario#'] = __('Scenarios', __FILE__);
+    $replace['#ModeTitle#'] = __('Mode', __FILE__);
+    $replace['#FanTitle#'] = __('Vitesse de Ventilation', __FILE__);
+    $replace['#HoriTitle#'] = __('Volet de soufflage horizontale', __FILE__);
+    $replace['#VertiTitle#'] = __('Ailettes verticales', __FILE__);
+    $replace['#TempTitle#'] = __('Température', __FILE__);
+    $replace['#ForecastTitle#'] = __('Météo', __FILE__);
+    $replace['#Heat#'] = __('Mode chaud', __FILE__);
+    $replace['#Cool#'] = __('Mode froid', __FILE__);
+    $replace['#Dry#'] = __('Séchage', __FILE__);
+    $replace['#Fan#'] = __('Ventilation', __FILE__);
+
+    return $this->postToHtml($_version, template_replace($replace, getTemplate('core', $version, 'mitsubishimelcloud', 'mitsubishimelcloud')));
+  }
 }
 
 class mitsubishimelcloudCmd extends cmd
@@ -539,7 +582,10 @@ class mitsubishimelcloudCmd extends cmd
       mitsubishimelcloud::SynchronizeMELCloud();
     }
     if('OperationMode' == $this->logicalId) {
-      log::add('mitsubishimelcloud', 'debug', 'New order requested, value : '.$_options['message']);
+      log::add('mitsubishimelcloud', 'debug', 'New mode requested, value : '.$_options['message']);
+    }
+    if('FanSpeed' == $this->logicalId) {
+      log::add('mitsubishimelcloud', 'debug', 'New Fan speed requested, value : '.$_options['message']);
     }
   }
 }

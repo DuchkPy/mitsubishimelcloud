@@ -1,8 +1,23 @@
+.TitleBar {
+  background-color: #F7F7F7;
+  height: 40px;
+}
+
+.ScenariosColumn {
+  width: 160px;
+  height: 600px;
+  background-color: #6b92ab;
+  float: left;
+}
+
 .CommandBlock {
-  width: 320px;
+  width: 330px;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 1.34em;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
+  background-color: #6b92ab;
+  display: inline-block;
+  margin-right: -4px;
 }
 
 .CommandTitle {
@@ -15,7 +30,7 @@
   margin: 8px 0 .4em;
   padding-left: 12px;
   padding-right: 10px;
-  line-height: 23px;
+  line-height: 21px;
 }
 
 .CommandControls {
@@ -29,7 +44,7 @@
   background-color: rgb(130, 155, 175);
   box-shadow: rgba(115, 141, 158, 0.8) 0px 1px 1px 1px inset;
   border-radius: 10px;
-  padding-left: 5px;
+  padding-left: 10px;
   padding-top: 10px;
 }
 
@@ -38,7 +53,6 @@
   height: 47px;
   margin-right: 10px;
   margin-bottom: 10px;
-  /* padding-top: 6px; */
   padding-bottom: 8px;
   border-radius: 8px;
   text-align: left;
@@ -76,7 +90,7 @@
   float: left;
   clear: none;
   width: 61px;
-  height: 85px;
+  height: 80px;
   padding-right: 11px;
 }
 
@@ -119,24 +133,74 @@
 
 .SelectedMode {
   display: block;
-  margin-top: -25px;
+  margin-top: -30px;
   margin-left: 50px;
 }
 
-.FanSpeedSpanVerti {
-  background: transparent;
+.FanSpeedLabelVerti {
   position: relative;
-  top: 14px;
+  top: 8px;
+  margin-left: 20px;
 }
 
-.FanSpeedSpanHori {
-  background: transparent;
+.FanSpeedLabelHori {
   position: relative;
   top: -10px;
 }
 
-.FanSpeedSpanVerti:hover .FanSpeedSpanHori:hover {
+.FanSpeedLabelVerti:hover .FanSpeedLabelHori:hover {
   cursor: pointer;
+}
+
+.RectZone {
+  color: white;
+  width: 158px;
+  height: 70px;
+}
+
+.RectButton {
+  height: 60px;
+  width: 145px;
+  text-align: left;
+  border-width: 0px;
+  border-radius: 0.6em;
+  text-shadow: none;
+  box-sizing: border-box;
+}
+
+.RectButton::before {
+  content: '';
+  position: relative;
+  display: block;
+  top: 20px;
+}
+
+.RectLabel {
+  position: relative;
+  left: 44px;
+  top: -17px;
+}
+
+.RectButton:hover {
+  background-color: rgb(138, 164, 185);
+  cursor: pointer;
+}
+
+.ButtonLabel {
+  cursor: pointer;
+  background: transparent;
+}
+
+.SquareZone {
+  width: 138px;
+  height: 130px;
+  border-width: 0px;
+  border-radius: 0.6em;
+  text-shadow: none;
+  box-sizing: border-box;
+  position: relative;
+  right: 12px;
+  float: right;
 }
 
 /* Background images related to specific ID */
@@ -208,7 +272,8 @@
   background-size: 35px 35px;
   width: 35px;
   height: 35px;
-  top: 25px;
+  top: 4px;
+  left: 7px;
 }
 #ButtonFanSpeed_1:hover::after, #ButtonFanSpeed_1.ZoneOn::after {
   background-image: url("../../../data/img/Fan_speed_on_Ata_1.png");
@@ -219,7 +284,8 @@
   background-size: 35px 35px;
   width: 35px;
   height: 35px;
-  top: 25px;
+  top: 4px;
+  left: 7px;
 }
 #ButtonFanSpeed_2:hover::after, #ButtonFanSpeed_2.ZoneOn::after {
   background-image: url("../../../data/img/Fan_speed_on_Ata_2.png");
@@ -230,7 +296,8 @@
   background-size: 35px 35px;
   width: 35px;
   height: 35px;
-  top: 25px;
+  top: 4px;
+  left: 7px;
 }
 #ButtonFanSpeed_3:hover::after, #ButtonFanSpeed_3.ZoneOn::after {
   background-image: url("../../../data/img/Fan_speed_on_Ata_3.png");
@@ -241,7 +308,8 @@
   background-size: 35px 35px;
   width: 35px;
   height: 35px;
-  top: 25px;
+  top: 4px;
+  left: 7px;
 }
 #ButtonFanSpeed_4:hover::after, #ButtonFanSpeed_4.ZoneOn::after {
   background-image: url("../../../data/img/Fan_speed_on_Ata_4.png");
@@ -252,7 +320,8 @@
   background-size: 35px 35px;
   width: 35px;
   height: 35px;
-  top: 25px;
+  top: 4px;
+  left: 7px;
 }
 #ButtonFanSpeed_5:hover::after, #ButtonFanSpeed_5.ZoneOn::after {
   background-image: url("../../../data/img/Fan_speed_on_Ata_5.png");
@@ -267,4 +336,203 @@
 }
 #ButtonFanSpeed_0:hover::before, #ButtonFanSpeed_0.ZoneOn::before {
   background-image: url("../../../data/img/Operate_on_Ata_8.png");
+}
+
+/* Horizontal vane */
+#ButtonHori_0::before {
+  background-image: url("../../../data/img/Operate_off_Ata_8.png");
+  background-size: 35px 35px;
+  width: 35px;
+  height: 35px;
+  top: 13px;
+  left: 4px;
+}
+#ButtonHori_0:hover::before {
+  background-image: url("../../../data/img/Operate_on_Ata_8.png");
+  background-size: 35px 35px;
+  width: 35px;
+  height: 35px;
+  top: 13px;
+  left: 4px;
+}
+
+#ButtonHori_12::before {
+  background-image: url("../../../data/img/VaneHorizontal_off.png");
+  background-size: 35px 35px;
+  width: 35px;
+  height: 35px;
+  top: 13px;
+  left: 4px;
+}
+#ButtonHori_12:hover::before {
+  background-image: url("../../../data/img/VaneHorizontal_animation.gif");
+  background-size: 35px 35px;
+  width: 35px;
+  height: 35px;
+  top: 13px;
+  left: 4px;
+}
+
+#ButtonHori {
+  background-image: url("../../../data/img/VaneHorizontal_transitions_off.png");
+  background-size: 130px 130px;
+  width: 130px;
+  height: 130px;
+  top: 0px;
+  z-index: 1;
+}
+
+#HoriBlock_1 {
+  position: relative;
+  float: left;
+  height: 65px;
+  width: 12px;
+  z-index: 2;
+  transform: rotate(30deg);
+  top: 17px;
+  left: 15px;
+}
+
+#HoriBlock_2 {
+  position: relative;
+  float: left;
+  height: 65px;
+  width: 12px;
+  z-index: 2;
+  transform: rotate(15deg);
+  top: 26px;
+  left: 25px;
+}
+
+#HoriBlock_3 {
+  position: relative;
+  float: left;
+  height: 65px;
+  width: 12px;
+  z-index: 2;
+  /* transform: rotate(-45deg); */
+  top: 28px;
+  left: 35px;
+}
+
+#HoriBlock_4 {
+  position: relative;
+  float: left;
+  height: 65px;
+  width: 12px;
+  z-index: 2;
+  transform: rotate(-15deg);
+  top: 26px;
+  left: 48px;
+}
+
+#HoriBlock_5 {
+  position: relative;
+  float: left;
+  height: 65px;
+  width: 12px;
+  z-index: 2;
+  transform: rotate(-30deg);
+  top: 17px;
+  left: 59px;
+}
+
+
+/* Vertical vane */
+#ButtonVerti_0::before {
+  background-image: url("../../../data/img/Operate_off_Ata_8.png");
+  background-size: 35px 35px;
+  width: 35px;
+  height: 35px;
+  top: 13px;
+  left: 4px;
+}
+#ButtonVerti_0:hover::before {
+  background-image: url("../../../data/img/Operate_on_Ata_8.png");
+  background-size: 35px 35px;
+  width: 35px;
+  height: 35px;
+  top: 13px;
+  left: 4px;
+}
+
+#ButtonVerti_7::before {
+  background-image: url("../../../data/img/VaneVertical_off.png");
+  background-size: 35px 35px;
+  width: 35px;
+  height: 35px;
+  top: 13px;
+  left: 4px;
+}
+#ButtonVerti_7:hover::before {
+  background-image: url("../../../data/img/VaneVertical_animation.gif");
+  background-size: 35px 35px;
+  width: 35px;
+  height: 35px;
+  top: 13px;
+  left: 4px;
+}
+
+#ButtonVerti {
+  background-image: url("../../../data/img/VaneVertical_transitions_off.png");
+  background-size: 130px 130px;
+  width: 130px;
+  height: 130px;
+  top: 0px;
+  z-index: 1;
+}
+
+#VertiBlock_2 {
+  position: relative;
+  float: left;
+  height: 65px;
+  width: 12px;
+  z-index: 2;
+  transform: rotate(-15deg);
+  top: 60px;
+  left: 10px;
+}
+
+#VertiBlock_3 {
+  position: relative;
+  float: left;
+  height: 65px;
+  width: 12px;
+  z-index: 2;
+  transform: rotate(-30deg);
+  top: 50px;
+  left: 23px;
+}
+
+#VertiBlock_4 {
+  position: relative;
+  float: left;
+  height: 65px;
+  width: 12px;
+  z-index: 2;
+  transform: rotate(-45deg);
+  top: 30px;
+  left: 30px;
+}
+
+#VertiBlock_5 {
+  position: relative;
+  float: left;
+  height: 65px;
+  width: 12px;
+  z-index: 2;
+  transform: rotate(-60deg);
+  top: 10px;
+  left: 35px;
+}
+
+#VertiBlock_6 {
+  position: relative;
+  float: left;
+  height: 65px;
+  width: 12px;
+  z-index: 2;
+  transform: rotate(-75deg);
+  top: -15px;
+  left: 30px;
 }
