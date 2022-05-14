@@ -347,7 +347,7 @@
   top: 13px;
   left: 4px;
 }
-#ButtonHori_0:hover::before {
+#ButtonHori_0:hover::before, #ButtonHori_0.ZoneOn::before{
   background-image: url("../../../data/img/Operate_on_Ata_8.png");
   background-size: 35px 35px;
   width: 35px;
@@ -364,7 +364,7 @@
   top: 13px;
   left: 4px;
 }
-#ButtonHori_12:hover::before {
+#ButtonHori_12:hover::before, #ButtonHori_12.ZoneOn::before {
   background-image: url("../../../data/img/VaneHorizontal_animation.gif");
   background-size: 35px 35px;
   width: 35px;
@@ -447,7 +447,7 @@
   top: 13px;
   left: 4px;
 }
-#ButtonVerti_0:hover::before {
+#ButtonVerti_0:hover::before, #ButtonVerti_0.ZoneOn::before {
   background-image: url("../../../data/img/Operate_on_Ata_8.png");
   background-size: 35px 35px;
   width: 35px;
@@ -464,7 +464,7 @@
   top: 13px;
   left: 4px;
 }
-#ButtonVerti_7:hover::before {
+#ButtonVerti_7:hover::before, #ButtonVerti_7.ZoneOn::before {
   background-image: url("../../../data/img/VaneVertical_animation.gif");
   background-size: 35px 35px;
   width: 35px;
@@ -482,7 +482,7 @@
   z-index: 1;
 }
 
-#VertiBlock_2 {
+#VertiBlock_5 {
   position: relative;
   float: left;
   height: 65px;
@@ -493,7 +493,7 @@
   left: 10px;
 }
 
-#VertiBlock_3 {
+#VertiBlock_4 {
   position: relative;
   float: left;
   height: 65px;
@@ -504,7 +504,7 @@
   left: 23px;
 }
 
-#VertiBlock_4 {
+#VertiBlock_3 {
   position: relative;
   float: left;
   height: 65px;
@@ -515,7 +515,7 @@
   left: 30px;
 }
 
-#VertiBlock_5 {
+#VertiBlock_2 {
   position: relative;
   float: left;
   height: 65px;
@@ -526,7 +526,7 @@
   left: 35px;
 }
 
-#VertiBlock_6 {
+#VertiBlock_1 {
   position: relative;
   float: left;
   height: 65px;

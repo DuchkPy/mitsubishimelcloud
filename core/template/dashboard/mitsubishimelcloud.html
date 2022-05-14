@@ -88,11 +88,11 @@
     <div class="CommandControls">
       <div class="SquareButtonZone VertiSelection#id#">
         <div class="SquareZone VertiSelection#id# ZoneOff" id="ButtonVerti">
-          <label class="ButtonLabel" id="VertiBlock_2"></label>
-          <label class="ButtonLabel" id="VertiBlock_3"></label>
-          <label class="ButtonLabel" id="VertiBlock_4"></label>
           <label class="ButtonLabel" id="VertiBlock_5"></label>
-          <label class="ButtonLabel" id="VertiBlock_6"></label>
+          <label class="ButtonLabel" id="VertiBlock_4"></label>
+          <label class="ButtonLabel" id="VertiBlock_3"></label>
+          <label class="ButtonLabel" id="VertiBlock_2"></label>
+          <label class="ButtonLabel" id="VertiBlock_1"></label>
         </div>
       </div>
       <div class="RectButtonZone VertiSelection#id#">
@@ -141,38 +141,44 @@
     });
 
     /* Horizontal Vane */
+    var CurrentHoriImage = "url('plugins/mitsubishimelcloud/data/img/VaneHorizontal_transitions_off.png')";
     if (#HoriVane_Value# == 0 || #HoriVane_Value# == 12) {
-      $(".VertiSelection#id# #ButtonHori_#HoriVane_Value#").addClass("ZoneOn");
+      $(".HoriSelection#id# #ButtonHori_#HoriVane_Value#").addClass("ZoneOn");
+      $("#ButtonHori").css("background-image", "url('plugins/mitsubishimelcloud/data/img/VaneHorizontal_transitions_off.png')");
     } else {
-      $("#ButtonHori").css("background-image", "url('plugins/mitsubishimelcloud/data/img/VaneHorizontal_transitions_#HoriVane_Value#.png')");
+      CurrentHoriImage = "url('plugins/mitsubishimelcloud/data/img/VaneHorizontal_transitions_#HoriVane_Value#.png')";
+      $("#ButtonHori").css("background-image", CurrentHoriImage);
     }
     $('#HoriBlock_1').mouseover(function(){$("#ButtonHori").css("background-image", "url('plugins/mitsubishimelcloud/data/img/VaneHorizontal_transitions_1.png')");});
-    $('#HoriBlock_1').mouseout(function(){$("#ButtonHori").css("background-image", "url('plugins/mitsubishimelcloud/data/img/VaneHorizontal_transitions_off.png')");});
-    $('#HoriBlock_2').mouseover(function(){$("#ButtonHori").css("background-image", "url('plugins/mitsubishimelcloud/data/img/VaneHorizontal_transitions-2.png')");});
-    $('#HoriBlock_2').mouseout(function(){$("#ButtonHori").css("background-image", "url('plugins/mitsubishimelcloud/data/img/VaneHorizontal_transitions_off.png')");});
+    $('#HoriBlock_1').mouseout(function(){$("#ButtonHori").css("background-image", CurrentHoriImage);});
+    $('#HoriBlock_2').mouseover(function(){$("#ButtonHori").css("background-image", "url('plugins/mitsubishimelcloud/data/img/VaneHorizontal_transitions_2.png')");});
+    $('#HoriBlock_2').mouseout(function(){$("#ButtonHori").css("background-image", CurrentHoriImage);});
     $('#HoriBlock_3').mouseover(function(){$("#ButtonHori").css("background-image", "url('plugins/mitsubishimelcloud/data/img/VaneHorizontal_transitions_3.png')");});
-    $('#HoriBlock_3').mouseout(function(){$("#ButtonHori").css("background-image", "url('plugins/mitsubishimelcloud/data/img/VaneHorizontal_transitions_off.png')");});
+    $('#HoriBlock_3').mouseout(function(){$("#ButtonHori").css("background-image", CurrentHoriImage);});
     $('#HoriBlock_4').mouseover(function(){$("#ButtonHori").css("background-image", "url('plugins/mitsubishimelcloud/data/img/VaneHorizontal_transitions_4.png')");});
-    $('#HoriBlock_4').mouseout(function(){$("#ButtonHori").css("background-image", "url('plugins/mitsubishimelcloud/data/img/VaneHorizontal_transitions_off.png')");});
+    $('#HoriBlock_4').mouseout(function(){$("#ButtonHori").css("background-image", CurrentHoriImage);});
     $('#HoriBlock_5').mouseover(function(){$("#ButtonHori").css("background-image", "url('plugins/mitsubishimelcloud/data/img/VaneHorizontal_transitions_5.png')");});
-    $('#HoriBlock_5').mouseout(function(){$("#ButtonHori").css("background-image", "url('plugins/mitsubishimelcloud/data/img/VaneHorizontal_transitions_off.png')");});
+    $('#HoriBlock_5').mouseout(function(){$("#ButtonHori").css("background-image", CurrentHoriImage);});
 
     /* Vertical Vane */
-    if (#VertiVane_Value# == 0 || #VertiVane_Value# == 12) {
-      $(".HoriSelection#id# #ButtonVerti_#VertiVane_Value#").addClass("ZoneOn");
+    var CurrentVertiImage = "url('plugins/mitsubishimelcloud/data/img/VaneVertical_transitions_off.png')";
+    if (#VertiVane_Value# == 0 || #VertiVane_Value# == 7) {
+      $(".VertiSelection#id# #ButtonVerti_#VertiVane_Value#").addClass("ZoneOn");
+      $("#ButtonVerti").css("background-image", "url('plugins/mitsubishimelcloud/data/img/VaneVertical_transitions_off.png')");
     } else {
-      $("#ButtonVerti").css("background-image", "url('plugins/mitsubishimelcloud/data/img/VaneVertical_transitions_#VertiVane_Value#.png')");
+      CurrentVertiImage = "url('plugins/mitsubishimelcloud/data/img/VaneVertical_transitions_#VertiVane_Value#.png')";
+      $("#ButtonVerti").css("background-image", CurrentVertiImage);
     }
-    $('#VertiBlock_2').mouseover(function(){$("#ButtonVerti").css("background-image", "url('plugins/mitsubishimelcloud/data/img/VaneVertical_transitions_1.png')");});
-    $('#VertiBlock_2').mouseout(function(){$("#ButtonVerti").css("background-image", "url('plugins/mitsubishimelcloud/data/img/VaneVertical_transitions_off.png')");});
-    $('#VertiBlock_3').mouseover(function(){$("#ButtonVerti").css("background-image", "url('plugins/mitsubishimelcloud/data/img/VaneVertical_transitions_2.png')");});
-    $('#VertiBlock_3').mouseout(function(){$("#ButtonVerti").css("background-image", "url('plugins/mitsubishimelcloud/data/img/VaneVertical_transitions_off.png')");});
-    $('#VertiBlock_4').mouseover(function(){$("#ButtonVerti").css("background-image", "url('plugins/mitsubishimelcloud/data/img/VaneVertical_transitions_3.png')");});
-    $('#VertiBlock_4').mouseout(function(){$("#ButtonVerti").css("background-image", "url('plugins/mitsubishimelcloud/data/img/VaneVertical_transitions_off.png')");});
-    $('#VertiBlock_5').mouseover(function(){$("#ButtonVerti").css("background-image", "url('plugins/mitsubishimelcloud/data/img/VaneVertical_transitions_4.png')");});
-    $('#VertiBlock_5').mouseout(function(){$("#ButtonVerti").css("background-image", "url('plugins/mitsubishimelcloud/data/img/VaneVertical_transitions_off.png')");});
-    $('#VertiBlock_6').mouseover(function(){$("#ButtonVerti").css("background-image", "url('plugins/mitsubishimelcloud/data/img/VaneVertical_transitions_5.png')");});
-    $('#VertiBlock_6').mouseout(function(){$("#ButtonVerti").css("background-image", "url('plugins/mitsubishimelcloud/data/img/VaneVertical_transitions_off.png')");});
+    $('#VertiBlock_1').mouseover(function(){$("#ButtonVerti").css("background-image", "url('plugins/mitsubishimelcloud/data/img/VaneVertical_transitions_1.png')");});
+    $('#VertiBlock_1').mouseout(function(){$("#ButtonVerti").css("background-image", CurrentVertiImage);});
+    $('#VertiBlock_2').mouseover(function(){$("#ButtonVerti").css("background-image", "url('plugins/mitsubishimelcloud/data/img/VaneVertical_transitions_2.png')");});
+    $('#VertiBlock_2').mouseout(function(){$("#ButtonVerti").css("background-image", CurrentVertiImage);});
+    $('#VertiBlock_3').mouseover(function(){$("#ButtonVerti").css("background-image", "url('plugins/mitsubishimelcloud/data/img/VaneVertical_transitions_3.png')");});
+    $('#VertiBlock_3').mouseout(function(){$("#ButtonVerti").css("background-image", CurrentVertiImage);});
+    $('#VertiBlock_4').mouseover(function(){$("#ButtonVerti").css("background-image", "url('plugins/mitsubishimelcloud/data/img/VaneVertical_transitions_4.png')");});
+    $('#VertiBlock_4').mouseout(function(){$("#ButtonVerti").css("background-image", CurrentVertiImage);});
+    $('#VertiBlock_5').mouseover(function(){$("#ButtonVerti").css("background-image", "url('plugins/mitsubishimelcloud/data/img/VaneVertical_transitions_5.png')");});
+    $('#VertiBlock_5').mouseout(function(){$("#ButtonVerti").css("background-image", CurrentVertiImage);});
 
     /* Refresh button */
     $('.eqLogic[data-eqLogic_uid=#uid#] .refresh').on('click', function () {
