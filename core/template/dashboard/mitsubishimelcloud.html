@@ -1,6 +1,6 @@
 <div class="eqLogic-widget eqLogic" style="width:#TemplateWidth#px; height:#TemplateHeight#px;" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="#version#" data-category="#category#" >
   <link rel="stylesheet" href="plugins/mitsubishimelcloud/core/template/css/mitsubishimelcloud.template.css"/>
-  <link rel="stylesheet" href="plugins/mitsubishimelcloud/core/template/css/mitsubishimelcloud.slider.css"/>
+  <link rel="stylesheet" href="plugins/mitsubishimelcloud/core/template/css/mitsubishimelcloud.slider.scss"/>
   
   <center class="widget-name"><a href="#eqLink#" style="font-size : 1.2em;#hideEqLogicName#"></a>
     <span class="cmd refresh pull-right cursor" data-cmd_id="#refresh#"><i class="fas fa-sync"></i></span>
@@ -115,10 +115,11 @@
         <span class="RoomTempLine_2">#RoomTemperature#°C</span>
       </div>
       <div class="SetTemp" style='--min:#MinTemperature#; --max:#MaxTemperature#; --step:0.5; --value:#SetTemperature#; --text-value:"#SetTemperature#";'>
-        <span class="SetTempTitle">#SetTempTitle#</span><output></output>
+        <span class="SetTempTitle">#SetTempTitle#</span>
         <input type="range" min="#MinTemperature#" max="#MaxTemperature#" step="0.5" value="#SetTemperature#" 
           oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-        <div class='range-slider__progress'></div>
+        <output></output>
+        <div class='SetTemp__Progress'></div>
       </div>
     </div>
   </div>
