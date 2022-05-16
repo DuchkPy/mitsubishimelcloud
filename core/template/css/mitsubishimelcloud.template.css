@@ -11,6 +11,7 @@
 }
 
 .CommandBlock {
+  color: white;
   width: 330px;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 1.34em;
@@ -21,7 +22,6 @@
 }
 
 .CommandTitle {
-  color: white;
   text-shadow: rgb(128, 128, 128) 0px 1px 0px;
   font-size: 18px;
   font-weight: normal;
@@ -34,7 +34,6 @@
 }
 
 .CommandControls {
-  color: white;
   text-shadow: rgb(128, 128, 128) 0px 1px 0px;
   width: 320px;
   position: relative;
@@ -153,7 +152,6 @@
 }
 
 .RectZone {
-  color: white;
   width: 158px;
   height: 70px;
 }
@@ -201,6 +199,34 @@
   position: relative;
   right: 12px;
   float: right;
+}
+
+.RoomTempLine {
+  font-size: 16px;
+  width: 300px;
+}
+
+.RoomTempLine_2 {
+  float: right;
+}
+
+.SetTemp {
+  background: rgb(87, 119, 142) linear-gradient(rgb(87, 119, 142) 0%, rgb(128, 157, 177) 100%) repeat scroll 0% 0%;
+  width: 298px;
+  height: 115px;
+  border-width: 0px;
+  border-radius: 0.6em;
+  text-shadow: none;
+  box-sizing: border-box;
+  padding-top: 15px;
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
+.SetTempTitle {
+  font-size: 16px;
+  display: block;
+  width: 150px;
 }
 
 /* Background images related to specific ID */

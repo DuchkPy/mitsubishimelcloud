@@ -553,10 +553,13 @@ class mitsubishimelcloud extends eqLogic
     $VertiVane_Value = $this->getCmd(null, 'VaneVerticalDirection_Value');
     $replace['#VertiVane_Value#'] = is_object($VertiVane_Value) ? $VertiVane_Value->execCmd() : '';
 
+    $RoomTemperature = $this->getCmd(null, 'RoomTemperature');
+    $replace['#RoomTemperature#'] = is_object($RoomTemperature) ? $RoomTemperature->execCmd() : '';
+
     $refresh = $this->getCmd(null, 'refresh');
     $replace['#refresh#'] = is_object($refresh) ? $refresh->getId() : '';
 
-    // Title :
+    // Titles :
     $replace['#MitsuMelcloudName#'] = $this->getName();
     $replace['#Scenario#'] = __('Scenarios', __FILE__);
     $replace['#ModeTitle#'] = __('Mode', __FILE__);
@@ -569,6 +572,8 @@ class mitsubishimelcloud extends eqLogic
     $replace['#Cool#'] = __('Mode froid', __FILE__);
     $replace['#Dry#'] = __('Séchage', __FILE__);
     $replace['#Fan#'] = __('Ventilation', __FILE__);
+    $replace['#RoomTempTitle#'] = __('Température de la pièce', __FILE__);
+    $replace['#SetTempTitle#'] = __('Régler la température', __FILE__);
 
     return $this->postToHtml($_version, template_replace($replace, getTemplate('core', $version, 'mitsubishimelcloud', 'mitsubishimelcloud')));
   }
