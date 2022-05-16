@@ -1,4 +1,5 @@
-/* Original code from yairEO, see more details: https://github.com/yairEO/ui-range */
+////////////////////////////////////////////////
+// Original code from yairEO, see more details: https://github.com/yairEO/ui-range
 
 .SetTemp {
   --primary-color: #0366d6;
@@ -16,55 +17,71 @@
 
   --min-max-font: 12px Arial;
   --min-max-opacity: 0.5;
-  --min-max-x-offset: 10%; /* 50% to center */
+  --min-max-x-offset: 10%; // 50% to center
 
   --thumb-size: 22px;
   --thumb-color: white;
   --thumb-shadow: 0 0 3px rgba(0, 0, 0, 0.4), 0 0 1px rgba(0, 0, 0, 0.5) inset,
     0 0 0 99px var(--thumb-color) inset;
 
-  --thumb-shadow-active: 0 0 0 calc(var(--thumb-size) / 4) inset var(--thumb-color),
+  --thumb-shadow-active: 0 0 0 calc(var(--thumb-size) / 4) inset
+      var(--thumb-color),
     0 0 0 99px var(--primary-color) inset, 0 0 3px rgba(0, 0, 0, 0.4);
 
   --thumb-shadow-hover: var(--thumb-shadow);
 
   --ticks-thickness: 1px;
   --ticks-height: 5px;
-  --ticks-gap: var(--ticks-height,
-      0); /* vertical space between the ticks and the progress bar */
+  --ticks-gap: var(
+    --ticks-height,
+    0
+  ); // vertical space between the ticks and the progress bar
   --ticks-color: silver;
 
-  /* ⚠️ BELOW VARIABLES SHOULD NOT BE CHANGED */
+  // ⚠️ BELOW VARIABLES SHOULD NOT BE CHANGED
   --step: 1;
   --ticks-count: Calc(var(--max) - var(--min)) / var(--step);
   --maxTicksAllowed: 30;
   --too-many-ticks: Min(1, Max(var(--ticks-count) - var(--maxTicksAllowed), 0));
-  --x-step: Max(var(--step),
-      var(--too-many-ticks) * (var(--max) - var(--min))); /* manipulate the number of steps if too many ticks exist, so there would only be 2 */
+  --x-step: Max(
+    var(--step),
+    var(--too-many-ticks) * (var(--max) - var(--min))
+  ); // manipulate the number of steps if too many ticks exist, so there would only be 2
   --tickInterval: 100/ ((var(--max) - var(--min)) / var(--step)) * var(--tickEvery, 1);
-  --tickIntervalPerc: calc((100% - var(--thumb-size)) / ((var(--max) - var(--min)) / var(--x-step)) * var(--tickEvery, 1));
+  --tickIntervalPerc: calc(
+    (100% - var(--thumb-size)) / ((var(--max) - var(--min)) / var(--x-step)) *
+      var(--tickEvery, 1)
+  );
 
-  --value-a: Clamp(var(--min),
-      var(--value, 0),
-      var(--max)); /* default value ("--value" is used in single-range markup) */
-  --value-b: var(--value, 0); /* default value */
+  --value-a: Clamp(
+    var(--min),
+    var(--value, 0),
+    var(--max)
+  ); // default value ("--value" is used in single-range markup)
+  --value-b: var(--value, 0); // default value
   --text-value-a: var(--text-value, "");
 
-  --completed-a: calc((var(--value-a) - var(--min)) / (var(--max) - var(--min)) * 100);
-  --completed-b: calc((var(--value-b) - var(--min)) / (var(--max) - var(--min)) * 100);
+  --completed-a: calc(
+    (var(--value-a) - var(--min)) / (var(--max) - var(--min)) * 100
+  );
+  --completed-b: calc(
+    (var(--value-b) - var(--min)) / (var(--max) - var(--min)) * 100
+  );
   --ca: Min(var(--completed-a), var(--completed-b));
   --cb: Max(var(--completed-a), var(--completed-b));
 
-  /* breakdown of the below super-complex brain-breaking CSS math:
-  "clamp" is used to ensure either "-1" or "1"
-  "calc" is used to inflat the outcome into a huge number, to get rid of any value between -1 & 1
-  if absolute diff of both completed % is above "5" (%)
-  ".001" bumps the value just a bit, to avoid a scenario where calc resulted in "0" (then clamp will also be "0") */
-  --thumbs-too-close: Clamp(-1,
-      1000 * (Min(1, Max(var(--cb) - var(--ca) - 5, -1)) + 0.001),
-      1);
-  --thumb-close-to-min: Min(1, Max(var(--ca) - 2, 0)); /* 2% threshold */
-  --thumb-close-to-max: Min(1, Max(98 - var(--cb), 0)); /* 2% threshold */
+  // breakdown of the below super-complex brain-breaking CSS math:
+  // "clamp" is used to ensure either "-1" or "1"
+  // "calc" is used to inflat the outcome into a huge number, to get rid of any value between -1 & 1
+  // if absolute diff of both completed % is above "5" (%)
+  // ".001" bumps the value just a bit, to avoid a scenario where calc resulted in "0" (then clamp will also be "0")
+  --thumbs-too-close: Clamp(
+    -1,
+    1000 * (Min(1, Max(var(--cb) - var(--ca) - 5, -1)) + 0.001),
+    1
+  );
+  --thumb-close-to-min: Min(1, Max(var(--ca) - 2, 0)); // 2% threshold
+  --thumb-close-to-max: Min(1, Max(98 - var(--cb), 0)); // 2% threshold
 
   @mixin thumb {
     appearance: none;
@@ -81,12 +98,17 @@
 
   display: inline-block;
   height: Max(var(--track-height), var(--thumb-size));
-  /* margin: calc((var(--thumb-size) - var(--track-height)) * -.25) var(--thumb-size) 0; */
-  background: linear-gradient(to right,
-    var(--ticks-color) var(--ticks-thickness),
-    transparent 1px) repeat-x;
+  // margin: calc((var(--thumb-size) - var(--track-height)) * -.25) var(--thumb-size) 0;
+  background: linear-gradient(
+      to right,
+      var(--ticks-color) var(--ticks-thickness),
+      transparent 1px
+    )
+    repeat-x;
   background-size: var(--tickIntervalPerc) var(--ticks-height);
-  background-position-x: calc(var(--thumb-size) / 2 - var(--ticks-thickness) / 2);
+  background-position-x: calc(
+    var(--thumb-size) / 2 - var(--ticks-thickness) / 2
+  );
   background-position-y: var(--flip-y, bottom);
 
   padding-bottom: var(--flip-y, var(--ticks-gap));
@@ -99,7 +121,7 @@
     --flip-y: 1;
   }
 
-  /* mix/max texts */
+  // mix/max texts
   &::before,
   &::after {
     --offset: calc(var(--thumb-size) / 2);
@@ -110,7 +132,10 @@
     bottom: var(--flip-y, -2.5ch);
     top: calc(-2.5ch * var(--flip-y));
     opacity: Clamp(0, var(--at-edge), var(--min-max-opacity));
-    transform: translateX(calc(var(--min-max-x-offset) * var(--before, -1) * -1)) scale(var(--at-edge));
+    transform: translateX(
+        calc(var(--min-max-x-offset) * var(--before, -1) * -1)
+      )
+      scale(var(--at-edge));
     pointer-events: none;
   }
 
@@ -137,7 +162,7 @@
     margin: 0 auto;
     z-index: 5;
 
-    /* trick so "justify" will work */
+    // trick so "justify" will work
     &::after {
       content: "";
       width: 100%;
@@ -147,7 +172,7 @@
     }
   }
 
-  &__Progress {
+  &__progress {
     --start-end: calc(var(--thumb-size) / 2);
     --clip-end: calc(100% - (var(--cb)) * 1%);
     --clip-start: calc(var(--ca) * 1%);
@@ -155,20 +180,23 @@
     position: absolute;
     left: var(--start-end);
     right: var(--start-end);
-    top: calc(var(--ticks-gap) * var(--flip-y, 0) + var(--thumb-size) / 2 - var(--track-height) / 2);
-    /*  transform: var(--flip-y, translateY(-50%) translateZ(0)); */
+    top: calc(
+      var(--ticks-gap) * var(--flip-y, 0) + var(--thumb-size) / 2 -
+        var(--track-height) / 2
+    );
+    //  transform: var(--flip-y, translateY(-50%) translateZ(0));
     height: calc(var(--track-height));
     background: var(--progress-background, #eee);
     pointer-events: none;
     z-index: -1;
     border-radius: var(--progress-radius);
 
-    /* fill area */
+    // fill area
     &::before {
       content: "";
       position: absolute;
-      /* left: Clamp(0%, calc(var(--ca) * 1%), 100%); /* confine to 0 or above */
-      /* width: Min(100%, calc((var(--cb) - var(--ca)) * 1%)); /* confine to maximum 100% */
+      // left: Clamp(0%, calc(var(--ca) * 1%), 100%); // confine to 0 or above
+      // width: Min(100%, calc((var(--cb) - var(--ca)) * 1%)); // confine to maximum 100%
       left: 0;
       right: 0;
       clip-path: var(--clip);
@@ -180,7 +208,7 @@
       border-radius: inherit;
     }
 
-    /* shadow-effect */
+    // shadow-effect
     &::after {
       content: "";
       position: absolute;
@@ -194,14 +222,17 @@
     }
   }
 
-  &>input {
+  & > input {
     -webkit-appearance: none;
     width: 100%;
     height: var(--thumb-size);
     margin: 0;
     position: absolute;
     left: 0;
-    top: calc(50% - Max(var(--track-height), var(--thumb-size)) / 2 + calc(var(--ticks-gap) / 2 * var(--flip-y, -1)));
+    top: calc(
+      50% - Max(var(--track-height), var(--thumb-size)) / 2 +
+        calc(var(--ticks-gap) / 2 * var(--flip-y, -1))
+    );
     cursor: -webkit-grab;
     cursor: grab;
     outline: none;
@@ -214,19 +245,16 @@
     &::-webkit-slider-thumb {
       @include thumb;
     }
-
     &::-moz-range-thumb {
       @include thumb;
     }
-
     &::-ms-thumb {
       @include thumb;
     }
 
     &:hover {
       --thumb-shadow: var(--thumb-shadow-hover);
-
-      &+output {
+      & + output {
         --value-background: var(--value-background-hover);
         --y-offset: -5px;
         color: var(--value-active-color);
@@ -237,24 +265,21 @@
     &:active {
       --thumb-shadow: var(--thumb-shadow-active);
       cursor: grabbing;
-      z-index: 2; /* when sliding left thumb over the right or vice-versa, make sure the moved thumb is on top */
-
-      +output {
+      z-index: 2; // when sliding left thumb over the right or vice-versa, make sure the moved thumb is on top
+      + output {
         transition: 0s;
       }
     }
 
     &:nth-of-type(1) {
       --is-left-most: Clamp(0, (var(--value-a) - var(--value-b)) * 99999, 1);
-
-      &+output {
+      & + output {
         &:not(:only-of-type) {
           --flip: calc(var(--thumbs-too-close) * -1);
         }
 
         --value: var(--value-a);
         --x-offset: calc(var(--completed-a) * -1%);
-
         &::after {
           content: var(--prefix, "") var(--text-value-a) var(--suffix, "");
         }
@@ -263,23 +288,24 @@
 
     &:nth-of-type(2) {
       --is-left-most: Clamp(0, (var(--value-b) - var(--value-a)) * 99999, 1);
-
-      &+output {
+      & + output {
         --value: var(--value-b);
       }
     }
 
-    /* non-multiple range should not clip start of progress bar */
+    // non-multiple range should not clip start of progress bar
     &:only-of-type {
-      ~.SetTemp__Progress {
+      ~ .SetTemp__Progress {
         --clip-start: 0;
       }
     }
 
-    &+output {
+    & + output {
       --flip: -1;
       --x-offset: calc(var(--completed-b) * -1%);
-      --pos: calc(((var(--value) - var(--min)) / (var(--max) - var(--min))) * 100%);
+      --pos: calc(
+        ((var(--value) - var(--min)) / (var(--max) - var(--min))) * 100%
+      );
 
       pointer-events: none;
       position: absolute;
@@ -288,8 +314,13 @@
       border-radius: 10px;
       padding: 2px 4px;
       left: var(--pos);
-      transform: translate(var(--x-offset),
-          calc(150% * var(--flip) - (var(--y-offset, 0px) + var(--value-offset-y)) * var(--flip)));
+      transform: translate(
+        var(--x-offset),
+        calc(
+          150% * var(--flip) - (var(--y-offset, 0px) + var(--value-offset-y)) *
+            var(--flip)
+        )
+      );
       transition: all 0.12s ease-out, left 0s;
 
       &::after {
@@ -300,10 +331,11 @@
   }
 }
 
-/* PAGE SETUP */
+////////////////////////////////////////////////
+// PAGE SETUP
 
 
-body>.SetTemp,
+body > .SetTemp,
 label[dir="rtl"] .SetTemp {
   width: Clamp(300px, 50vw, 800px);
   min-width: 200px;

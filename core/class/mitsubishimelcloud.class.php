@@ -556,6 +556,13 @@ class mitsubishimelcloud extends eqLogic
     $RoomTemperature = $this->getCmd(null, 'RoomTemperature');
     $replace['#RoomTemperature#'] = is_object($RoomTemperature) ? $RoomTemperature->execCmd() : '';
 
+    $SetTemperature = $this->getCmd(null, 'SetTemperature');
+    $replace['#MinTemperature#'] = is_object($SetTemperature) ? $SetTemperature->getConfiguration('minValue') : '';
+    $replace['#MaxTemperature#'] = is_object($SetTemperature) ? $SetTemperature->getConfiguration('maxValue') : '';
+    
+    $SetTemp = $this->getCmd(null, 'SetTemperature_Value');
+    $replace['#SetTemperature#'] = is_object($SetTemp) ? $SetTemp->execCmd() : '';
+
     $refresh = $this->getCmd(null, 'refresh');
     $replace['#refresh#'] = is_object($refresh) ? $refresh->getId() : '';
 
