@@ -206,22 +206,18 @@
   width: 300px;
 }
 
-.RoomTempLine_2 {
-  float: right;
+.RoomTempLine_1 {
+  padding-left: 8px;
 }
 
-.SetTemp {
-  background: rgb(87, 119, 142) linear-gradient(rgb(87, 119, 142) 0%, rgb(128, 157, 177) 100%) repeat scroll 0% 0%;
-  width: 298px;
-  height: 115px;
-  border-width: 0px;
-  border-radius: 0.6em;
-  text-shadow: none;
-  box-sizing: border-box;
-  padding-top: 15px;
-  padding-left: 20px;
-  margin-bottom: 10px;
+.RoomTempLine_2 {
+  float: right;
+  font-weight: bold;
 }
+
+/* .SetTemp {
+  See .slider.css sheet
+} */
 
 .SetTempTitle {
   font-size: 16px;

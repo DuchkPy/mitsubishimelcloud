@@ -1,0 +1,190 @@
+.SetTemp {
+  --thumb-size: 30px;
+  --thumb-color: white;
+  --thumb-shadow: 0 0 3px rgba(0, 0, 0, 0.4), 0 0 1px rgba(0, 0, 0, 0.5) inset, 0 0 0 99px var(--thumb-color) inset;
+  --thumb-shadow-active: 0 0 0 calc(var(--thumb-size) / 4) inset var(--thumb-color), 0 0 0 99px var(--thumb-color) inset, 0 0 3px rgba(0, 0, 0, 0.4);
+  --value-a: Clamp(var(--min), var(--value, 0), var(--max));
+  --value-b: var(--value, 0);
+  --completed-a: calc((var(--value-a) - var(--min)) / (var(--max) - var(--min)) * 100);
+  --completed-b: calc((var(--value-b) - var(--min)) / (var(--max) - var(--min)) * 100);
+  --ca: Min(var(--completed-a), var(--completed-b));
+  --cb: Max(var(--completed-a), var(--completed-b));
+  --thumbs-too-close: Clamp(-1, 1000 * (Min(1, Max(var(--cb) - var(--ca) - 5, -1)) + 0.001), 1);
+
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  background: rgb(87, 119, 142) linear-gradient(rgb(87, 119, 142) 0%, rgb(128, 157, 177) 100%) repeat scroll 0% 0%;
+  width: 298px;
+  height: 115px;
+  border-width: 0px;
+  border-radius: 0.6em;
+  text-shadow: none;
+  box-sizing: border-box;
+  padding-top: 15px;
+  padding-left: 20px;
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+
+.SetTemp[data-ticks-position="top"] {
+  --flip-y: 1;
+}
+
+.SetTemp__progress {
+  --clip-end: calc(100% - (var(--cb)) * 1%);
+  --clip-start: calc(var(--ca) * 1%);
+  --clip: inset(-20px var(--clip-end) -20px var(--clip-start));
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  top: 74px;
+  height: 17px;
+  background: #eee;
+  pointer-events: none;
+  z-index: 3;
+  border-radius: 20px;
+  border: 1px solid rgb(74, 113, 144);
+}
+
+.SetTemp__progress::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  clip-path: var(--clip);
+  top: 0;
+  bottom: 0;
+  background: #3388cc;
+  box-shadow: var(--progress-flll-shadow);
+  z-index: 4;
+  border-radius: inherit;
+}
+
+.SetTemp__progress::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  box-shadow: var(--progress-shadow);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.SetTemp>input {
+  -webkit-appearance: none;
+  width: 100%;
+  height: var(--thumb-size);
+  margin: 0;
+  position: absolute;
+  left: 0;
+  top: 67px;
+  cursor: -webkit-grab;
+  cursor: grab;
+  outline: none;
+  background: none;
+}
+
+.SetTemp>input:not(:only-of-type) {
+  pointer-events: none;
+}
+
+.SetTemp>input::-webkit-slider-thumb {
+  appearance: none;
+  height: var(--thumb-size);
+  width: var(--thumb-size);
+  transform: var(--thumb-transform);
+  border-radius: var(--thumb-radius, 50%);
+  background: var(--thumb-color);
+  box-shadow: var(--thumb-shadow);
+  border: none;
+  pointer-events: auto;
+  transition: 0.1s;
+  z-index: 6;
+}
+
+.SetTemp>input::-moz-range-thumb {
+  appearance: none;
+  height: var(--thumb-size);
+  width: var(--thumb-size);
+  transform: var(--thumb-transform);
+  border-radius: var(--thumb-radius, 50%);
+  background: var(--thumb-color);
+  box-shadow: var(--thumb-shadow);
+  border: none;
+  pointer-events: auto;
+  transition: 0.1s;
+  z-index: 6;
+}
+
+.SetTemp>input::-ms-thumb {
+  appearance: none;
+  height: var(--thumb-size);
+  width: var(--thumb-size);
+  transform: var(--thumb-transform);
+  border-radius: var(--thumb-radius, 50%);
+  background: var(--thumb-color);
+  box-shadow: var(--thumb-shadow);
+  border: none;
+  pointer-events: auto;
+  transition: 0.1s;
+  z-index: 6;
+}
+
+.SetTemp>input:hover {
+  --thumb-shadow: var(--thumb-shadow);
+}
+
+.SetTemp>input:hover+span {
+  --y-offset: -5px;
+}
+
+.SetTemp>input:active {
+  --thumb-shadow: var(--thumb-shadow-active);
+  cursor: grabbing;
+  z-index: 2;
+}
+
+.SetTemp>input:active+span {
+  transition: 0s;
+}
+
+.SetTemp>input:nth-of-type(1) {
+  --is-left-most: Clamp(0, (var(--value-a) - var(--value-b)) * 99999, 1);
+}
+
+.SetTemp>input:nth-of-type(1)+span {
+  --value: var(--value-a);
+  --x-offset: calc(var(--completed-a) * -1%);
+}
+
+.SetTemp>input:nth-of-type(1)+span:not(:only-of-type) {
+  --flip: calc(var(--thumbs-too-close) * -1);
+}
+
+.SetTemp>input:nth-of-type(1)+span::after {
+  content: var(--prefix, "") var(--text-value, "") var(--suffix, "°C");
+  position: relative;
+  top: -50px;
+  left: -3px;
+  float: right;
+}
+
+.SetTemp>input:nth-of-type(2) {
+  --is-left-most: Clamp(0, (var(--value-b) - var(--value-a)) * 99999, 1);
+}
+
+.SetTemp>input:nth-of-type(2)+span {
+  --value: var(--value-b);
+}
+
+.SetTemp>input:only-of-type~.SetTemp__progress {
+  --clip-start: 0;
+}
+
+.SetTemp>input+span::after {
+  content: var(--prefix, "") var(--text-value-b) var(--suffix, "°C");
+  font-size: 28pt;
+}
